@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* bbc-icon 폰트 (gbe-1.0에서 차용) */
+@font-face {
+  font-family: bbc-icon;
+  src:
+    url("/fonts/bbc-icon/bbc-icon.woff2") format("woff2"),
+    url("/fonts/bbc-icon/bbc-icon.woff") format("woff"),
+    url("/fonts/bbc-icon/bbc-icon.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon {
+  display: inline-block;
+  font-family: bbc-icon;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 아이콘 사이즈 */
+.icon.is-xs::before { font-size: 18px; }
+.icon.is-sm::before { font-size: 20px; }
+.icon.is-md::before { font-size: 24px; }
+.icon.is-lg::before { font-size: 32px; }
+.icon.is-xl::before { font-size: 36px; }
+
+/* 유니코드 매핑 (gbe-1.0 $g_icons 기반) */
+.icon-alarm::before       { content: "\e802"; }
+.icon-arrow-right::before { content: "\e803"; }
+.icon-calendar::before    { content: "\e806"; }
+.icon-check::before       { content: "\e80b"; }
+.icon-chevron-down::before  { content: "\e80c"; }
+.icon-chevron-left::before  { content: "\e80d"; }
+.icon-chevron-right::before { content: "\e80e"; }
+.icon-chevron-up::before    { content: "\e80f"; }
+.icon-copy::before        { content: "\e811"; }
+.icon-delete::before      { content: "\e882"; }
+.icon-edit::before        { content: "\e820"; }
+.icon-eye::before         { content: "\e827"; }
+.icon-home::before        { content: "\e839"; }
+.icon-menu::before        { content: "\e84a"; }
+.icon-minus::before       { content: "\e84f"; }
+.icon-notification::before { content: "\e854"; }
+.icon-plus::before        { content: "\e865"; }
+.icon-refresh::before     { content: "\e868"; }
+.icon-search::before      { content: "\e86b"; }
+.icon-settings::before    { content: "\e86e"; }
+.icon-share::before       { content: "\e86f"; }
+.icon-star::before        { content: "\e877"; }
+.icon-user::before        { content: "\e886"; }
+.icon-heart-solid::before { content: "\e833"; }
+.icon-home-solid::before  { content: "\e838"; }
+.icon-play-solid::before  { content: "\e862"; }
+.icon-star-solid::before  { content: "\e876"; }
