@@ -16,7 +16,7 @@ const COMPARISON_TABLE = [
       { feature: 'CSS 애니메이션', svg: '✅ path · stroke 등 풍부한 CSS 제어 가능', font: '⚠️ 글리프 단위 애니메이션 불가, transform · opacity만 가능' },
       { feature: '텍스트 CSS 속성', svg: '❌ text-shadow 등 텍스트 CSS 적용 불가', font: '✅ text-shadow · letter-spacing 등 모든 텍스트 CSS 활용 가능' },
       { feature: 'IE 지원', svg: '⚠️ IE11부터 지원 (use href 제한)', font: '✅ EOT 포함 시 IE8까지 지원' },
-      { feature: '빌드 도구', svg: '✅ 간단한 Node 스크립트 (이 프로젝트 기준)', font: '⚠️ Fantasticon 등 별도 툴체인 필요' },
+      { feature: '빌드 도구', svg: '✅ 간단한 Node 스크립트 (이 프로젝트 기준)', font: '✅ npm run build:icons 한 번으로 자동 빌드 가능 — SVG Sprite와 동일한 수준 (빌드 파이프라인 통합 시)' },
     ],
   },
   {
@@ -27,7 +27,7 @@ const COMPARISON_TABLE = [
       { feature: '로드 타이밍', svg: '✅ 아이콘 사용 시점에 지연 로드 가능', font: '⚠️ CSS 파싱 완료 후 폰트 파일 추가 요청 (font-display로 제어 가능)' },
       { feature: '렌더링 블로킹', svg: '✅ 블로킹 없음', font: '⚠️ FOIT 가능성 — font-display: swap으로 완화 가능' },
       { feature: '캐싱', svg: '✅ 파일 1개 캐싱', font: '✅ woff2 파일 1개 캐싱 (모던 브라우저 기준)' },
-      { feature: '아이콘 추가 비용', svg: '✅ SVG 추가 후 스크립트 1회 실행 (이 프로젝트 기준)', font: '⚠️ Fantasticon 재빌드 → 폰트 교체 → CSS 유니코드 매핑 추가' },
+      { feature: '아이콘 추가 비용', svg: '✅ SVG 추가 후 스크립트 1회 실행 (이 프로젝트 기준)', font: '✅ SVG 추가 후 npm run build:icons 1회 실행으로 폰트 재빌드 · CSS 매핑 자동 처리 가능 (빌드 파이프라인 통합 시)' },
     ],
   },
 ]
