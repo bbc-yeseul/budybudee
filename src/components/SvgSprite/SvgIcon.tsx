@@ -13,6 +13,8 @@ interface SvgIconProps {
   preserveColor?: boolean
 }
 
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+
 export default function SvgIcon({
   name,
   size = 'md',
@@ -38,7 +40,7 @@ export default function SvgIcon({
     return (
       // eslint-disable-next-line @next/next/no-img-element -- SVG icon fallback preserves author-defined multi-color fills.
       <img
-        src={`/icons/${fileName}.svg`}
+        src={`${BASE_PATH}/icons/${fileName}.svg`}
         alt={decorative ? '' : label}
         aria-hidden={decorative ? true : undefined}
         width={px}
@@ -56,7 +58,7 @@ export default function SvgIcon({
       className={className}
       style={color ? { color } : undefined}
     >
-      <use href={`/sprite/sprite.svg#icon-${fileId}`} />
+      <use href={`${BASE_PATH}/sprite/sprite.svg#icon-${fileId}`} />
     </svg>
   )
 }

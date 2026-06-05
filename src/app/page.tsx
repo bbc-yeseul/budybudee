@@ -1,6 +1,7 @@
 'use client'
 
 import { Fragment, useState } from 'react'
+import Link from 'next/link'
 import { SvgIcon } from '@/components/SvgSprite'
 import { FontIcon } from '@/components/FontIcon'
 import { ALL_ICONS, SVG_ONLY_ICONS, PRESERVE_COLOR_ICONS, type IconName, type IconSize } from '@/lib/iconData'
@@ -47,6 +48,14 @@ export default function Home() {
         <header className="text-center space-y-3">
           <h1 className="text-4xl font-bold text-gray-900">SVG Sprite vs Icon Font</h1>
           <p className="text-lg text-gray-500">두 아이콘 방식을 직접 비교해보세요</p>
+          <div className="pt-2">
+            <Link
+              href="/vitest"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 text-white text-sm font-semibold rounded-xl hover:bg-emerald-700 transition-colors"
+            >
+              Vitest 보러가기 →
+            </Link>
+          </div>
         </header>
 
         {/* 아이콘 그리드 비교 */}

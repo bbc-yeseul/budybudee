@@ -16,16 +16,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* bbc-icon 폰트 (gbe-1.0에서 차용) */
-@font-face {
-  font-family: bbc-icon;
-  src:
-    url("/fonts/bbc-icon/bbc-icon.woff2") format("woff2"),
-    url("/fonts/bbc-icon/bbc-icon.woff") format("woff"),
-    url("/fonts/bbc-icon/bbc-icon.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
 
 .icon {
   display: inline-block;
