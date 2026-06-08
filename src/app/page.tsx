@@ -24,7 +24,7 @@ const COMPARISON_TABLE = [
     rows: [
       { feature: '파일 용량', svg: '⚠️ 아이콘당 ≈1.2KB (27KB / 23개) — 아이콘 수에 비례해 증가', font: '✅ woff2 기준 아이콘당 ≈87B (13KB / 149개) — 대량 아이콘에 유리' },
       { feature: 'HTTP 요청 수', svg: '✅ 1개 (sprite.svg)', font: '✅ 1개 (woff2, 모던 브라우저 기준)' },
-      { feature: '로드 타이밍', svg: '✅ 아이콘 사용 시점에 지연 로드 가능', font: '⚠️ CSS 파싱 완료 후 폰트 파일 추가 요청 (font-display로 제어 가능)' },
+      { feature: '로드 타이밍', svg: '✅ 코드 스플리팅·조건부 렌더링 시 지연 로드 가능 — 단순 SPA는 초기 렌더와 동시 로드', font: '⚠️ CSS 파싱 직후 폰트 파일 요청 — 라우트·렌더 여부 무관하게 선제적으로 로드' },
       { feature: '렌더링 블로킹', svg: '✅ 블로킹 없음', font: '⚠️ FOIT 가능성 — font-display: swap으로 완화 가능' },
       { feature: '캐싱', svg: '✅ 파일 1개 캐싱', font: '✅ woff2 파일 1개 캐싱 (모던 브라우저 기준)' },
       { feature: '아이콘 추가 비용', svg: '✅ SVG 추가 후 스크립트 1회 실행 (이 프로젝트 기준)', font: '✅ SVG 추가 후 npm run build:icons 1회 실행으로 폰트 재빌드 · CSS 매핑 자동 처리 가능 (빌드 파이프라인 통합 시)' },
