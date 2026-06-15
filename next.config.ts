@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const isGithubPages = process.env.GITHUB_PAGES === 'true';
-const BASE_PATH = '/svgtest';
+const BASE_PATH = '/budybudee';
 
 const nextConfig: NextConfig = {
   basePath: BASE_PATH,
@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
           return [
             {
               source: '/',
-              destination: '/svgtest',
+              destination: '/budybudee',
               basePath: false,
               permanent: false,
             },
