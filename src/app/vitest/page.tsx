@@ -147,12 +147,18 @@ export default function VitestPage() {
         <header className="text-center space-y-3">
           <h1 className="text-4xl font-bold text-gray-900">Vitest 테스트 가이드</h1>
           <p className="text-lg text-gray-500">이 프로젝트의 테스트 환경과 작성 방법</p>
-          <div className="pt-2">
+          <div className="pt-2 flex items-center justify-center gap-3">
             <Link
-              href="/"
+              href="/svg"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-xl hover:bg-blue-700 transition-colors"
             >
               ← 아이콘 관리 보러가기
+            </Link>
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-600 text-white text-sm font-semibold rounded-xl hover:bg-gray-700 transition-colors"
+            >
+              ← 메인으로 이동하기
             </Link>
           </div>
         </header>
@@ -339,12 +345,20 @@ expect(svg).toHaveStyle({ color: '#ff0000' })`,
 
         <footer className="flex items-center justify-between text-sm text-gray-400 pb-4">
           <span>테스트 실행: <code>npm run test:run</code></span>
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-xl hover:bg-blue-700 transition-colors"
-          >
-            ← 아이콘 관리 보러가기
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link
+              href="/svg"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-xl hover:bg-blue-700 transition-colors"
+            >
+              ← 아이콘 관리 보러가기
+            </Link>
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-600 text-white text-sm font-semibold rounded-xl hover:bg-gray-700 transition-colors"
+            >
+              ← 메인으로 이동하기
+            </Link>
+          </div>
         </footer>
       </div>
     </main>
