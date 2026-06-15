@@ -17,6 +17,14 @@ const STUDY_LIST = [
     badgeColor: 'bg-emerald-100 text-emerald-700',
     accent: 'hover:border-emerald-300',
   },
+  {
+    href: '/about-frontend',
+    title: '프론트엔드 개발자 소개',
+    desc: '역할·퍼블리셔 차이·협업 흐름·성능 지표·용어 사전까지 — 타 직군을 위한 프론트엔드 안내서',
+    badge: 'FE',
+    badgeColor: 'bg-violet-100 text-violet-700',
+    accent: 'hover:border-violet-300',
+  },
 ]
 
 export default function MainPage() {
