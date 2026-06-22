@@ -1,14 +1,16 @@
 'use client'
 
+import React from 'react'
 import { useState } from 'react'
 import Link from 'next/link'
+
 
 const PAGE_CSS = `
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
 :root{
   --bg:#0E0E10;--bg2:#16161A;--bg3:#1E1E24;--bg4:#252530;
   --b:rgba(255,255,255,0.07);--b2:rgba(255,255,255,0.13);
-  --t:#E8E8F0;--t2:#A0A0AD;--t3:#8e8e9c;
+  --t:#E8E8F0;--t2:#B8B8C4;--t3:#C9C9D4;
   --ac:#5B9EF7;--acd:rgba(91,158,247,0.12);
   --gn:#4EC9A0;--gnd:rgba(78,201,160,0.12);
   --am:#F0A050;--amd:rgba(240,160,80,0.12);
@@ -27,11 +29,11 @@ const PAGE_CSS = `
 .nav-dot{width:8px;height:8px;border-radius:50%;background:var(--ac);animation:fe-pulse 2s infinite}
 @keyframes fe-pulse{0%,100%{opacity:1}50%{opacity:.3}}
 .nav-links{display:flex;gap:2px;margin-left:auto;list-style:none;flex-wrap:wrap}
-.nav-links a{font-size:14px;color:var(--t3);text-decoration:none;padding:5px 9px;border-radius:var(--rs);transition:all .15s}
+.nav-links a{font-size:14px;color:var(--t2);text-decoration:none;padding:5px 9px;border-radius:var(--rs);transition:all .15s}
 .nav-links a:hover{color:var(--t);background:var(--bg3)}
 .fe-sec{max-width:900px;margin:0 auto;padding:4rem 2rem;border-top:1px solid var(--b)}
 .fe-hero{max-width:900px;margin:0 auto;padding:4.5rem 2rem 3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-.hero-eye{font-family:var(--mono);font-size:14px;color:var(--ac);letter-spacing:.1em;margin-bottom:1.25rem;opacity:.8}
+.hero-eye{font-family:var(--mono);font-size:14px;color:var(--ac);letter-spacing:.1em;margin-bottom:1.25rem}
 .hero-title{font-size:clamp(28px,4.5vw,46px);font-weight:700;line-height:1.12;letter-spacing:-.025em;margin-bottom:1.25rem}
 .hero-title em{font-style:normal;color:var(--ac)}
 .hero-desc{font-size:16px;color:var(--t2);line-height:1.8;margin-bottom:1.5rem}
@@ -107,9 +109,15 @@ const PAGE_CSS = `
 .tcode{margin-top:9px;background:#0A0A0C;border:1px solid var(--b);border-radius:var(--rs);padding:10px 14px;font-family:var(--mono);font-size:14px;color:var(--ac);white-space:pre;overflow-x:auto;line-height:1.7}
 .dglabel{font-size:15px;font-weight:700;display:flex;align-items:center;gap:7px;margin-bottom:10px}
 .dglabel.good{color:var(--gn)}.dglabel.bad{color:var(--co)}
-.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:1.5rem}
-.dcard{background:var(--bg2);border:1px solid var(--b);border-radius:var(--r);padding:1rem}
-.dcard.good{border-left:2px solid var(--gn)}.dcard.bad{border-left:2px solid var(--co)}
+.design-row{position:relative;display:grid;grid-template-columns:336px minmax(0,1fr);gap:.75rem;align-items:stretch;margin-bottom:1.5rem;background:var(--bg2);border:1px solid var(--b);border-radius:var(--r);padding:.75rem}
+.design-row.good{border-color:rgba(78,201,160,.5);background:rgba(78,201,160,.05);box-shadow:inset 0 0 0 1px rgba(78,201,160,.1)}
+.design-row.bad{border-color:rgba(240,112,112,.5);background:rgba(240,112,112,.05);box-shadow:inset 0 0 0 1px rgba(240,112,112,.1)}
+.design-row .fe-illust-wide{margin:0;background:transparent;border:none;border-radius:0;padding:0;align-self:center}
+.dgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;align-content:start;border:1px solid var(--b);border-radius:var(--rs);overflow:hidden;background:var(--bg)}
+.dcard{background:transparent;border-right:1px solid var(--b);border-bottom:1px solid var(--b);padding:.875rem .95rem;min-height:118px}
+.dcard:nth-child(2n){border-right:none}
+.dcard:nth-last-child(-n+2){border-bottom:none}
+.dcard.good,.dcard.bad{border-left:none}
 .dtop{display:flex;align-items:flex-start;gap:8px;margin-bottom:7px}
 .dico{width:25px;height:25px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
 .dico.g{background:var(--gnd);color:var(--gn)}.dico.b{background:var(--cod);color:var(--co)}
@@ -143,7 +151,7 @@ const PAGE_CSS = `
 .demo-field input,.demo-field select{width:100%;background:var(--bg3);border:1px solid var(--b2);border-radius:var(--rs);padding:8px 11px;color:var(--t);font-size:15px;outline:none;transition:border-color .15s;font-family:var(--sans)}
 .demo-field input:focus,.demo-field select:focus{border-color:var(--ac)}
 .demo-field select option{background:var(--bg3)}
-.demo-btn{width:100%;padding:10px;background:var(--ac);color:#fff;border:none;border-radius:var(--rs);font-size:15px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:opacity .15s}
+.demo-btn{width:100%;padding:10px;background:#2B5FBE;color:#fff;border:none;border-radius:var(--rs);font-size:15px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:opacity .15s}
 .demo-btn:hover{opacity:.85}
 .demo-json{padding:1.25rem;font-family:var(--mono);font-size:14px;line-height:1.85;min-height:180px;white-space:pre-wrap}
 .demo-empty{color:var(--t3);font-size:14px;font-style:italic}
@@ -177,64 +185,417 @@ const PAGE_CSS = `
   .dc:nth-child(odd){border-right:none}
   .tb{padding-left:16px}
   .fa{padding-left:16px}
+  .design-row{grid-template-columns:1fr;padding:.875rem}
+  .dgrid{grid-template-columns:1fr}
+  .dcard{border-right:none;border-bottom:1px solid var(--b);min-height:auto}
+  .dcard:nth-last-child(-n+2){border-bottom:1px solid var(--b)}
+  .dcard:last-child{border-bottom:none}
 }
 `
 
-const HERO_SVG = `<svg width="340" height="260" viewBox="0 0 340 260" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="8" y="30" width="90" height="120" rx="8" fill="#1E1E24" stroke="#F0A050" stroke-width="1.5"/>
-  <rect x="18" y="42" width="70" height="10" rx="3" fill="#F0A050" opacity=".4"/>
-  <rect x="18" y="58" width="50" height="6" rx="2" fill="#686878"/>
-  <rect x="18" y="70" width="60" height="6" rx="2" fill="#686878"/>
-  <rect x="18" y="86" width="70" height="28" rx="5" fill="#252530" stroke="#F0A050" stroke-width="1" stroke-dasharray="3 2"/>
-  <text x="53" y="111" font-size="11" fill="#F0A050" text-anchor="middle" font-family="monospace">Figma</text>
-  <rect x="18" y="122" width="30" height="16" rx="4" fill="#F0A050" opacity=".7"/>
-  <rect x="54" y="122" width="30" height="16" rx="4" fill="#252530" stroke="#686878" stroke-width="1"/>
-  <text x="8" y="174" font-size="12" fill="#F0A050" font-family="monospace">디자인 시안</text>
-  <path d="M102 90 L124 90" stroke="#5B9EF7" stroke-width="1.5" stroke-dasharray="4 2"/>
-  <path d="M120 85 L128 90 L120 95" stroke="#5B9EF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <rect x="130" y="20" width="80" height="140" rx="8" fill="#16161A" stroke="#5B9EF7" stroke-width="1.5"/>
-  <rect x="130" y="20" width="80" height="22" rx="8" fill="#1E1E24"/>
-  <rect x="130" y="34" width="80" height="8" fill="#1E1E24"/>
-  <circle cx="141" cy="31" r="5.5" fill="#FF5F57"/>
-  <circle cx="152" cy="31" r="5.5" fill="#FEBC2E"/>
-  <circle cx="163" cy="31" r="5.5" fill="#28C840"/>
-  <text x="180" y="40" font-size="9" fill="#686878" text-anchor="middle" font-family="monospace">App.jsx</text>
-  <text x="140" y="62" font-size="9.5" fill="#A07EF0" font-family="monospace">import</text>
-  <text x="163" y="62" font-size="9.5" fill="#E8E8F0" font-family="monospace">React</text>
-  <text x="140" y="74" font-size="9.5" fill="#A07EF0" font-family="monospace">function</text>
-  <text x="171" y="74" font-size="9.5" fill="#5B9EF7" font-family="monospace">App</text>
-  <text x="140" y="86" font-size="9.5" fill="#686878" font-family="monospace">// API 호출</text>
-  <text x="140" y="98" font-size="9.5" fill="#5B9EF7" font-family="monospace">fetch</text>
-  <text x="160" y="98" font-size="9.5" fill="#4EC9A0" font-family="monospace">('/api')</text>
-  <text x="140" y="110" font-size="9.5" fill="#A07EF0" font-family="monospace">return</text>
-  <text x="163" y="110" font-size="9.5" fill="#F07070" font-family="monospace">&lt;div&gt;</text>
-  <text x="148" y="122" font-size="9.5" fill="#F07070" font-family="monospace">&lt;h1&gt;</text>
-  <text x="165" y="122" font-size="9.5" fill="#E8E8F0" font-family="monospace">{data}</text>
-  <text x="148" y="134" font-size="9.5" fill="#F07070" font-family="monospace">&lt;/h1&gt;</text>
-  <text x="140" y="146" font-size="9.5" fill="#F07070" font-family="monospace">&lt;/div&gt;</text>
-  <text x="138" y="182" font-size="12" fill="#5B9EF7" font-family="monospace">JS 코드</text>
-  <path d="M214 90 L234 90" stroke="#5B9EF7" stroke-width="1.5" stroke-dasharray="4 2"/>
-  <path d="M230 85 L238 90 L230 95" stroke="#5B9EF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <rect x="240" y="20" width="92" height="140" rx="8" fill="#16161A" stroke="#4EC9A0" stroke-width="1.5"/>
-  <rect x="240" y="20" width="92" height="26" rx="8" fill="#1E1E24"/>
-  <rect x="240" y="38" width="92" height="8" fill="#1E1E24"/>
-  <circle cx="252" cy="33" r="5.5" fill="#FF5F57"/>
-  <circle cx="263" cy="33" r="5.5" fill="#FEBC2E"/>
-  <circle cx="274" cy="33" r="5.5" fill="#28C840"/>
-  <rect x="282" y="27" width="42" height="12" rx="3" fill="#252530" stroke="#686878" stroke-width=".5"/>
-  <text x="303" y="42.5" font-size="9" fill="#A0A0AD" text-anchor="middle" font-family="monospace">localhost</text>
-  <rect x="250" y="52" width="72" height="12" rx="3" fill="#5B9EF7" opacity=".8"/>
-  <text x="286" y="61" font-size="9.5" fill="#0E0E10" text-anchor="middle" font-family="monospace" font-weight="bold">안녕하세요!</text>
-  <rect x="250" y="68" width="50" height="5" rx="2" fill="#686878"/>
-  <rect x="250" y="78" width="60" height="5" rx="2" fill="#686878"/>
-  <rect x="250" y="88" width="44" height="5" rx="2" fill="#686878"/>
-  <rect x="250" y="102" width="72" height="22" rx="5" fill="#1E1E24" stroke="#4EC9A0" stroke-width="1"/>
-  <text x="286" y="116" font-size="9" fill="#4EC9A0" text-anchor="middle" font-family="monospace">데이터 카드</text>
-  <rect x="250" y="130" width="30" height="12" rx="4" fill="#5B9EF7" opacity=".8"/>
-  <rect x="286" y="130" width="30" height="12" rx="4" fill="#1E1E24" stroke="#686878" stroke-width=".8"/>
-  <text x="246" y="184" font-size="12" fill="#4EC9A0" font-family="monospace">실제 화면</text>
+const HERO_SVG = `<svg width="350" height="260" viewBox="0 0 340 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="30" width="90" height="120" rx="8" fill="#1E1E24" stroke="#F0A050" stroke-width="1.5"/>
+  <rect x="10" y="42" width="70" height="10" rx="3" fill="#F0A050" opacity=".4"/>
+  <rect x="10" y="58" width="50" height="6" rx="2" fill="#686878"/>
+  <rect x="10" y="70" width="60" height="6" rx="2" fill="#686878"/>
+  <rect x="10" y="86" width="70" height="28" rx="5" fill="#252530" stroke="#F0A050" stroke-width="1" stroke-dasharray="3 2"/>
+  <text x="45" y="103" font-size="11" fill="#F0A050" text-anchor="middle" font-family="monospace">Figma</text>
+  <rect x="10" y="122" width="30" height="16" rx="4" fill="#F0A050" opacity=".7"/>
+  <rect x="46" y="122" width="30" height="16" rx="4" fill="#252530" stroke="#686878" stroke-width="1"/>
+  <text x="18" y="174" font-size="12" fill="#F0A050" font-family="monospace">디자인 시안</text>
+  <path d="M94 90 L118 90" stroke="#5B9EF7" stroke-width="1.5" stroke-dasharray="4 2"/>
+  <path d="M114 85 L122 90 L114 95" stroke="#5B9EF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="124" y="20" width="95" height="140" rx="8" fill="#16161A" stroke="#5B9EF7" stroke-width="1.5"/>
+  <rect x="125" y="20" width="93" height="22" rx="8" fill="#1E1E24"/>
+  <rect x="125" y="34" width="93" height="8" fill="#1E1E24"/>
+  <circle cx="136" cy="31" r="5.5" fill="#FF5F57"/>
+  <circle cx="148" cy="31" r="5.5" fill="#FEBC2E"/>
+  <circle cx="160" cy="31" r="5.5" fill="#28C840"/>
+  <text x="190" y="35" font-size="9" fill="#686878" text-anchor="middle" font-family="monospace">App.jsx</text>
+  <text x="135" y="62" font-size="9.5" fill="#A07EF0" font-family="monospace">import</text>
+  <text x="158" y="62" font-size="9.5" fill="#E8E8F0" font-family="monospace">React</text>
+  <text x="135" y="74" font-size="9.5" fill="#A07EF0" font-family="monospace">function</text>
+  <text x="166" y="74" font-size="9.5" fill="#5B9EF7" font-family="monospace">App</text>
+  <text x="135" y="86" font-size="9.5" fill="#686878" font-family="monospace">// API 호출</text>
+  <text x="135" y="98" font-size="9.5" fill="#5B9EF7" font-family="monospace">fetch</text>
+  <text x="155" y="98" font-size="9.5" fill="#4EC9A0" font-family="monospace">('/api')</text>
+  <text x="135" y="110" font-size="9.5" fill="#A07EF0" font-family="monospace">return</text>
+  <text x="158" y="110" font-size="9.5" fill="#F07070" font-family="monospace">&lt;div&gt;</text>
+  <text x="143" y="122" font-size="9.5" fill="#F07070" font-family="monospace">&lt;h1&gt;</text>
+  <text x="160" y="122" font-size="9.5" fill="#E8E8F0" font-family="monospace">{data}</text>
+  <text x="143" y="134" font-size="9.5" fill="#F07070" font-family="monospace">&lt;/h1&gt;</text>
+  <text x="135" y="146" font-size="9.5" fill="#F07070" font-family="monospace">&lt;/div&gt;</text>
+  <text x="153" y="182" font-size="12" fill="#5B9EF7" font-family="monospace">JS 코드</text>
+  <path d="M223 90 L236 90" stroke="#5B9EF7" stroke-width="1.5" stroke-dasharray="4 2"/>
+  <path d="M232 85 L240 90 L232 95" stroke="#5B9EF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="242" y="20" width="100" height="140" rx="8" fill="#16161A" stroke="#4EC9A0" stroke-width="1.5"/>
+  <rect x="242" y="20" width="100" height="26" rx="8" fill="#1E1E24"/>
+  <rect x="245" y="38" width="95" height="8" fill="#1E1E24"/>
+  <circle cx="255" cy="33" r="5.5" fill="#FF5F57"/>
+  <circle cx="267" cy="33" r="5.5" fill="#FEBC2E"/>
+  <circle cx="279" cy="33" r="5.5" fill="#28C840"/>
+  <rect x="288" y="25" width="45" height="12" rx="3" fill="#252530" stroke="#686878" stroke-width=".5"/>
+  <text x="312" y="38" font-size="9" fill="#A0A0AD" text-anchor="middle" font-family="monospace">localhost</text>
+  <rect x="253" y="52" width="76" height="12" rx="3" fill="#5B9EF7" opacity=".8"/>
+  <text x="291" y="61" font-size="9.5" fill="#0E0E10" text-anchor="middle" font-family="monospace" font-weight="bold">안녕하세요!</text>
+  <rect x="253" y="68" width="52" height="5" rx="2" fill="#686878"/>
+  <rect x="253" y="78" width="64" height="5" rx="2" fill="#686878"/>
+  <rect x="253" y="88" width="48" height="5" rx="2" fill="#686878"/>
+  <rect x="253" y="102" width="76" height="22" rx="5" fill="#1E1E24" stroke="#4EC9A0" stroke-width="1"/>
+  <text x="291" y="116" font-size="9" fill="#4EC9A0" text-anchor="middle" font-family="monospace">데이터 카드</text>
+  <rect x="253" y="130" width="32" height="12" rx="4" fill="#5B9EF7" opacity=".8"/>
+  <rect x="291" y="130" width="32" height="12" rx="4" fill="#1E1E24" stroke="#686878" stroke-width=".8"/>
+  <text x="267" y="184" font-size="12" fill="#4EC9A0" font-family="monospace">실제 화면</text>
   <text x="170" y="226" font-size="14" fill="#E8E8F0" text-anchor="middle" font-family="monospace" font-weight="bold">디자인 → 코드 → 화면</text>
   <text x="170" y="244" font-size="12" fill="#A0A0AD" text-anchor="middle" font-family="monospace">프론트엔드가 만드는 과정</text>
+</svg>`
+
+const ROLE_SVG = `<svg width="100%" viewBox="0 0 800 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(0,0)">
+    <rect x="10" y="10" width="110" height="130" rx="10" fill="#16161A" stroke="#5B9EF7" stroke-width="1.2"/>
+    <rect x="22" y="28" width="86" height="8" rx="3" fill="#5B9EF7" opacity=".5"/>
+    <rect x="22" y="52" width="60" height="5" rx="2" fill="#252530"/>
+    <rect x="22" y="62" width="74" height="5" rx="2" fill="#252530"/>
+    <rect x="22" y="76" width="86" height="32" rx="6" fill="#252530" stroke="#5B9EF7" stroke-width=".8" stroke-dasharray="3 2"/>
+    <text x="65" y="97" font-size="9" fill="#5B9EF7" text-anchor="middle" font-family="monospace">이미지</text>
+    <rect x="22" y="118" width="36" height="14" rx="5" fill="#5B9EF7" opacity=".7"/>
+    <text x="40" y="128.5" font-size="8" fill="#0E0E10" text-anchor="middle" font-family="monospace">버튼</text>
+    <text x="65" y="158" font-size="11" fill="#5B9EF7" text-anchor="middle" font-family="monospace" font-weight="bold">화면 구현</text>
+  </g>
+  <g transform="translate(138,0)">
+    <rect x="10" y="20" width="110" height="110" rx="10" fill="#16161A" stroke="#4EC9A0" stroke-width="1.2"/>
+    <rect x="24" y="38" width="81" height="17" rx="5" fill="#1E1E24" stroke="#4EC9A0" stroke-width=".8"/>
+    <text x="65" y="50" font-size="8.5" fill="#4EC9A0" text-anchor="middle" font-family="monospace">GET /api/users</text>
+    <path d="M65 58 L65 72" stroke="#4EC9A0" stroke-width="1.5" stroke-dasharray="3 2"/>
+    <polygon points="60,70 70,70 65,78" fill="#4EC9A0"/>
+    <rect x="22" y="82" width="82" height="32" rx="6" fill="#252530" stroke="#4EC9A0" stroke-width=".8"/>
+    <text x="30" y="95" font-size="7.5" fill="#4EC9A0" font-family="monospace">name: "김철수"</text>
+    <text x="30" y="107" font-size="7.5" fill="#4EC9A0" font-family="monospace">role: "designer"</text>
+    <text x="65" y="158" font-size="11" fill="#4EC9A0" text-anchor="middle" font-family="monospace" font-weight="bold">API 연동</text>
+  </g>
+  <g transform="translate(276,0)">
+    <rect x="10" y="10" width="110" height="130" rx="10" fill="#16161A" stroke="#A07EF0" stroke-width="1.2"/>
+    <rect x="28" y="28" width="74" height="20" rx="5" fill="#A07EF0" opacity=".15" stroke="#A07EF0" stroke-width=".8"/>
+    <text x="65" y="41" font-size="8.5" fill="#A07EF0" text-anchor="middle" font-family="monospace">hover ✦</text>
+    <path d="M45 60 Q55 52 65 60 Q75 68 85 60" stroke="#A07EF0" stroke-width="1.5" fill="none"/>
+    <path d="M45 76 Q55 68 65 76 Q75 84 85 76" stroke="#A07EF0" stroke-width="1" fill="none" opacity=".4"/>
+    <rect x="28" y="90" width="74" height="14" rx="4" fill="#252530"/>
+    <rect x="28" y="90" width="40" height="14" rx="4" fill="#A07EF0" opacity=".6"/>
+    <text x="65" y="100.5" font-size="8" fill="#A07EF0" text-anchor="middle" font-family="monospace">progress 55%</text>
+    <circle cx="65" cy="120" r="12" fill="#252530" stroke="#A07EF0" stroke-width="1"/>
+    <text x="65" y="124" font-size="10" fill="#A07EF0" text-anchor="middle">↻</text>
+    <text x="65" y="158" font-size="11" fill="#A07EF0" text-anchor="middle" font-family="monospace" font-weight="bold">인터랙션</text>
+  </g>
+  <g transform="translate(414,0)">
+    <rect x="10" y="14" width="70" height="110" rx="8" fill="#16161A" stroke="#F0A050" stroke-width="1.2"/>
+    <rect x="10" y="14" width="70" height="18" rx="8" fill="#1E1E24"/><rect x="10" y="24" width="70" height="8" fill="#1E1E24"/>
+    <rect x="20" y="40" width="50" height="7" rx="3" fill="#F0A050" opacity=".5"/>
+    <rect x="20" y="52" width="40" height="4" rx="2" fill="#252530"/>
+    <rect x="20" y="60" width="45" height="4" rx="2" fill="#252530"/>
+    <rect x="20" y="70" width="50" height="18" rx="4" fill="#252530" stroke="#F0A050" stroke-width=".6" stroke-dasharray="2 2"/>
+    <rect x="20" y="95" width="22" height="10" rx="4" fill="#F0A050" opacity=".6"/>
+    <rect x="48" y="95" width="22" height="10" rx="4" fill="#252530" stroke="#444455" stroke-width=".6"/>
+    <rect x="88" y="28" width="44" height="80" rx="6" fill="#16161A" stroke="#F0A050" stroke-width="1" opacity=".7"/>
+    <rect x="92" y="36" width="36" height="5" rx="2" fill="#F0A050" opacity=".4"/>
+    <rect x="92" y="46" width="28" height="3" rx="1" fill="#252530"/>
+    <rect x="92" y="54" width="32" height="3" rx="1" fill="#252530"/>
+    <rect x="92" y="62" width="36" height="14" rx="3" fill="#252530" stroke="#F0A050" stroke-width=".5" stroke-dasharray="2 2"/>
+    <rect x="92" y="82" width="14" height="8" rx="3" fill="#F0A050" opacity=".5"/>
+    <text x="66" y="158" font-size="11" fill="#F0A050" text-anchor="middle" font-family="monospace" font-weight="bold">반응형</text>
+  </g>
+  <g transform="translate(552,0)">
+    <rect x="10" y="20" width="110" height="110" rx="10" fill="#16161A" stroke="#F07070" stroke-width="1.2"/>
+    <text x="65" y="40" font-size="10" fill="#F07070" text-anchor="middle" font-family="monospace">로딩 속도</text>
+    <rect x="22" y="46" width="82" height="10" rx="3" fill="#252530"/>
+    <rect x="22" y="46" width="72" height="10" rx="3" fill="#F07070" opacity=".7"/>
+    <text x="65" y="54" font-size="7.5" fill="#0E0E10" text-anchor="middle" font-family="monospace">1.2s → 0.3s ↓</text>
+    <text x="65" y="74" font-size="10" fill="#F07070" text-anchor="middle" font-family="monospace">번들 크기</text>
+    <rect x="22" y="80" width="82" height="10" rx="3" fill="#252530"/>
+    <rect x="22" y="80" width="30" height="10" rx="3" fill="#F07070" opacity=".7"/>
+    <text x="65" y="88" font-size="7.5" fill="#888896" text-anchor="middle" font-family="monospace">최적화 후 36%</text>
+    <circle cx="65" cy="108" r="10" fill="none" stroke="#F07070" stroke-width="6" stroke-dasharray="37 25" transform="rotate(-90 65 108)"/>
+    <text x="65" y="111.5" font-size="8.5" fill="#F07070" text-anchor="middle" font-family="monospace">60</text>
+    <text x="65" y="158" font-size="11" fill="#F07070" text-anchor="middle" font-family="monospace" font-weight="bold">성능 최적화</text>
+  </g>
+  <g transform="translate(690,0)">
+    <rect x="10" y="20" width="100" height="110" rx="10" fill="#16161A" stroke="#888896" stroke-width="1.2"/>
+    <rect x="20" y="34" width="80" height="14" rx="4" fill="#1E1E24" stroke="#444455" stroke-width=".8"/>
+    <text x="60" y="44" font-size="8" fill="#F07070" font-family="monospace" text-anchor="middle">❌ TypeError</text>
+    <text x="60" y="62" font-size="7.5" fill="#888896" text-anchor="middle" font-family="monospace">Cannot read</text>
+    <text x="60" y="73" font-size="7.5" fill="#888896" text-anchor="middle" font-family="monospace">property of null</text>
+    <path d="M30 86 L90 86" stroke="#444455" stroke-width=".8"/>
+    <text x="60" y="100" font-size="7.5" fill="#4EC9A0" text-anchor="middle" font-family="monospace">// 원인 발견!</text>
+    <text x="60" y="112" font-size="7.5" fill="#4EC9A0" text-anchor="middle" font-family="monospace">user?.name ✓</text>
+    <text x="60" y="158" font-size="11" fill="#888896" text-anchor="middle" font-family="monospace" font-weight="bold">디버깅</text>
+  </g>
+</svg>`
+
+const DIFF_SVG = `<svg width="320" height="200" viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="8" y="8" width="130" height="156" rx="10" fill="#16161A" stroke="#F0A050" stroke-width="1.5"/>
+  <text x="73" y="30" font-size="11" fill="#F0A050" text-anchor="middle" font-family="monospace" font-weight="bold">퍼블리셔</text>
+  <text x="20" y="50" font-size="8.5" fill="#F07070" font-family="monospace">&lt;header&gt;</text>
+  <text x="28" y="63" font-size="8.5" fill="#4EC9A0" font-family="monospace">.nav { color:</text>
+  <text x="28" y="76" font-size="8.5" fill="#F0A050" font-family="monospace">#fff; }</text>
+  <text x="20" y="89" font-size="8.5" fill="#F07070" font-family="monospace">&lt;/header&gt;</text>
+  <text x="20" y="102" font-size="8.5" fill="#F07070" font-family="monospace">&lt;section&gt;</text>
+  <text x="28" y="115" font-size="8.5" fill="#4EC9A0" font-family="monospace">.card { border-</text>
+  <text x="28" y="128" font-size="8.5" fill="#4EC9A0" font-family="monospace">radius: 8px; }</text>
+  <text x="20" y="141" font-size="8.5" fill="#F07070" font-family="monospace">&lt;/section&gt;</text>
+  <rect x="18" y="152" width="50" height="6" rx="2" fill="#F0A050" opacity=".4"/>
+  <rect x="72" y="152" width="50" height="6" rx="2" fill="#F0A050" opacity=".2"/>
+  <path d="M142 92 L178 92" stroke="#5B9EF7" stroke-width="1.5" stroke-dasharray="4 2"/>
+  <polygon points="173,87 181,92 173,97" fill="#5B9EF7"/>
+  <text x="160" y="108" font-size="9" fill="#5B9EF7" text-anchor="middle" font-family="monospace">+JS</text>
+  <rect x="182" y="8" width="130" height="156" rx="10" fill="#16161A" stroke="#5B9EF7" stroke-width="1.5"/>
+  <text x="247" y="30" font-size="11" fill="#5B9EF7" text-anchor="middle" font-family="monospace" font-weight="bold">프론트엔드</text>
+  <text x="194" y="50" font-size="8.5" fill="#A07EF0" font-family="monospace">function App() {</text>
+  <text x="202" y="63" font-size="8.5" fill="#A07EF0" font-family="monospace">const [data,</text>
+  <text x="202" y="76" font-size="8.5" fill="#A07EF0" font-family="monospace">setData] = useState</text>
+  <text x="202" y="89" font-size="8.5" fill="#4EC9A0" font-family="monospace">fetch('/api')</text>
+  <text x="202" y="102" font-size="8.5" fill="#4EC9A0" font-family="monospace">.then(setData)</text>
+  <text x="194" y="115" font-size="8.5" fill="#F07070" font-family="monospace">return &lt;List</text>
+  <text x="202" y="128" font-size="8.5" fill="#F07070" font-family="monospace">data={data}/&gt;</text>
+  <text x="194" y="141" font-size="8.5" fill="#A07EF0" font-family="monospace">}</text>
+  <rect x="194" y="152" width="50" height="6" rx="2" fill="#5B9EF7" opacity=".4"/>
+  <rect x="248" y="152" width="50" height="6" rx="2" fill="#5B9EF7" opacity=".2"/>
+  <text x="160" y="185" font-size="10" fill="#888896" text-anchor="middle" font-family="monospace">정적 마크업 → 살아있는 데이터</text>
+</svg>`
+
+const FLOW_SVG = `<svg width="100%" viewBox="0 0 860 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="20" width="110" height="80" rx="10" fill="#16161A" stroke="#F0A050" stroke-width="1.2"/>
+  <text x="65" y="44" font-size="10" fill="#F0A050" text-anchor="middle" font-family="monospace">📋 기획자</text>
+  <rect x="22" y="52" width="76" height="5" rx="2" fill="#252530"/>
+  <rect x="22" y="62" width="60" height="5" rx="2" fill="#252530"/>
+  <rect x="22" y="72" width="70" height="5" rx="2" fill="#252530"/>
+  <rect x="22" y="82" width="50" height="5" rx="2" fill="#F0A050" opacity=".4"/>
+  <text x="65" y="118" font-size="9.5" fill="#F0A050" text-anchor="middle" font-family="monospace">요구사항 정의</text>
+  <path d="M122 60 L148 60" stroke="#888896" stroke-width="1.2" stroke-dasharray="3 2"/>
+  <polygon points="144,56 152,60 144,64" fill="#888896"/>
+  <rect x="152" y="20" width="110" height="80" rx="10" fill="#16161A" stroke="#A07EF0" stroke-width="1.2"/>
+  <text x="207" y="44" font-size="10" fill="#A07EF0" text-anchor="middle" font-family="monospace">🎨 디자이너</text>
+  <rect x="164" y="52" width="76" height="38" rx="5" fill="#1E1E24" stroke="#A07EF0" stroke-width=".6" stroke-dasharray="2 2"/>
+  <rect x="172" y="58" width="60" height="8" rx="3" fill="#A07EF0" opacity=".3"/>
+  <rect x="172" y="70" width="44" height="5" rx="2" fill="#252530"/>
+  <rect x="172" y="78" width="52" height="5" rx="2" fill="#252530"/>
+  <text x="207" y="118" font-size="9.5" fill="#A07EF0" text-anchor="middle" font-family="monospace">Figma 시안</text>
+  <path d="M264 60 L290 60" stroke="#888896" stroke-width="1.2" stroke-dasharray="3 2"/>
+  <polygon points="286,56 294,60 286,64" fill="#888896"/>
+  <rect x="294" y="20" width="110" height="80" rx="10" fill="#16161A" stroke="#4EC9A0" stroke-width="1.2"/>
+  <text x="349" y="44" font-size="10" fill="#4EC9A0" text-anchor="middle" font-family="monospace">📄 퍼블리셔</text>
+  <text x="306" y="60" font-size="8" fill="#F07070" font-family="monospace">&lt;div class=</text>
+  <text x="306" y="72" font-size="8" fill="#4EC9A0" font-family="monospace">"card"&gt;</text>
+  <text x="306" y="84" font-size="8" fill="#F07070" font-family="monospace">&lt;/div&gt;</text>
+  <text x="349" y="118" font-size="9.5" fill="#4EC9A0" text-anchor="middle" font-family="monospace">HTML/CSS 마크업</text>
+  <path d="M406 60 L432 60" stroke="#888896" stroke-width="1.2" stroke-dasharray="3 2"/>
+  <polygon points="428,56 436,60 428,64" fill="#888896"/>
+  <rect x="436" y="10" width="130" height="100" rx="10" fill="#16161A" stroke="#5B9EF7" stroke-width="2"/>
+  <rect x="436" y="10" width="130" height="100" rx="10" fill="rgba(91,158,247,0.04)"/>
+  <text x="501" y="36" font-size="10" fill="#5B9EF7" text-anchor="middle" font-family="monospace" font-weight="bold">⭐ 프론트엔드</text>
+  <text x="448" y="52" font-size="8" fill="#A07EF0" font-family="monospace">useState()</text>
+  <text x="448" y="64" font-size="8" fill="#4EC9A0" font-family="monospace">fetch('/api')</text>
+  <text x="448" y="76" font-size="8" fill="#F07070" font-family="monospace">&lt;Component/&gt;</text>
+  <text x="448" y="88" font-size="8" fill="#5B9EF7" font-family="monospace">router.push()</text>
+  <text x="501" y="128" font-size="9.5" fill="#5B9EF7" text-anchor="middle" font-family="monospace" font-weight="bold">기능 개발</text>
+  <path d="M568 60 L594 60" stroke="#888896" stroke-width="1.2" stroke-dasharray="3 2"/>
+  <polygon points="590,56 598,60 590,64" fill="#888896"/>
+  <rect x="598" y="20" width="110" height="80" rx="10" fill="#16161A" stroke="#F07070" stroke-width="1.2"/>
+  <text x="653" y="44" font-size="10" fill="#F07070" text-anchor="middle" font-family="monospace">🖥 백엔드</text>
+  <rect x="610" y="52" width="82" height="14" rx="4" fill="#1E1E24" stroke="#F07070" stroke-width=".6"/>
+  <text x="651" y="62.5" font-size="8" fill="#F07070" text-anchor="middle" font-family="monospace">GET /api/posts</text>
+  <rect x="610" y="72" width="82" height="20" rx="4" fill="#252530"/>
+  <text x="651" y="83" font-size="7.5" fill="#4EC9A0" text-anchor="middle" font-family="monospace">{ data: [...] }</text>
+  <text x="653" y="118" font-size="9.5" fill="#F07070" text-anchor="middle" font-family="monospace">API 서버</text>
+  <path d="M710 60 L736 60" stroke="#888896" stroke-width="1.2" stroke-dasharray="3 2"/>
+  <polygon points="732,56 740,60 732,64" fill="#888896"/>
+  <rect x="740" y="20" width="110" height="80" rx="10" fill="#16161A" stroke="#888896" stroke-width="1.2"/>
+  <text x="795" y="44" font-size="10" fill="#E8E8F0" text-anchor="middle" font-family="monospace">🚀 배포</text>
+  <rect x="752" y="52" width="82" height="16" rx="4" fill="#1E1E24" stroke="#4EC9A0" stroke-width=".6"/>
+  <text x="793" y="63" font-size="8" fill="#4EC9A0" text-anchor="middle" font-family="monospace">✓ Build success</text>
+  <rect x="752" y="74" width="82" height="16" rx="4" fill="#4EC9A0" opacity=".2" stroke="#4EC9A0" stroke-width=".5"/>
+  <text x="793" y="85" font-size="8" fill="#4EC9A0" text-anchor="middle" font-family="monospace">사용자에게 전달</text>
+  <text x="795" y="118" font-size="9.5" fill="#888896" text-anchor="middle" font-family="monospace">빌드 &amp; 배포</text>
+</svg>`
+
+const DEMO_SVG = `<svg width="100%" viewBox="0 0 700 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="20" width="110" height="55" rx="8" fill="#16161A" stroke="#5B9EF7" stroke-width="1.2"/>
+  <text x="65" y="38" font-size="9" fill="#5B9EF7" text-anchor="middle" font-family="monospace">① 사용자 입력</text>
+  <rect x="20" y="44" width="80" height="11" rx="3" fill="#252530" stroke="#444455" stroke-width=".6"/>
+  <text x="60" y="53" font-size="8" fill="#888896" text-anchor="middle" font-family="monospace">이름 입력...</text>
+  <rect x="20" y="58" width="50" height="10" rx="4" fill="#5B9EF7" opacity=".8"/>
+  <text x="45" y="65.5" font-size="7.5" fill="#fff" text-anchor="middle" font-family="monospace">제출</text>
+  <path d="M122 47 L158 47" stroke="#4EC9A0" stroke-width="1.2" stroke-dasharray="3 2"/>
+  <polygon points="154,43 162,47 154,51" fill="#4EC9A0"/>
+  <text x="140" y="38" font-size="8" fill="#4EC9A0" text-anchor="middle" font-family="monospace">JS 처리</text>
+  <rect x="162" y="10" width="135" height="70" rx="8" fill="#16161A" stroke="#4EC9A0" stroke-width="1.2"/>
+  <text x="229" y="27" font-size="9" fill="#4EC9A0" text-anchor="middle" font-family="monospace">② JSON 생성</text>
+  <text x="172" y="40" font-size="8" fill="#A07EF0" font-family="monospace">const body = {</text>
+  <text x="180" y="52" font-size="8" fill="#F07070" font-family="monospace">name: "홍길동",</text>
+  <text x="180" y="63" font-size="8" fill="#F07070" font-family="monospace">role: "기획자"</text>
+  <text x="172" y="74" font-size="8" fill="#A07EF0" font-family="monospace">}</text>
+  <path d="M299 47 L346 47" stroke="#F0A050" stroke-width="1.2" stroke-dasharray="3 2"/>
+  <polygon points="342,43 350,47 342,51" fill="#F0A050"/>
+  <text x="322" y="40" font-size="8" fill="#F0A050" text-anchor="middle" font-family="monospace">HTTP 요청</text>
+  <rect x="352" y="15" width="130" height="60" rx="8" fill="#16161A" stroke="#F0A050" stroke-width="1.2"/>
+  <text x="417" y="32" font-size="9" fill="#F0A050" text-anchor="middle" font-family="monospace">③ 서버로 전송</text>
+  <text x="362" y="46" font-size="8" fill="#F0A050" font-family="monospace">POST /api/users</text>
+  <text x="362" y="58" font-size="8" fill="#888896" font-family="monospace">Content-Type:</text>
+  <text x="362" y="69" font-size="8" fill="#888896" font-family="monospace">application/json</text>
+  <path d="M484 47 L510 47" stroke="#4EC9A0" stroke-width="1.2" stroke-dasharray="3 2"/>
+  <polygon points="506,43 514,47 506,51" fill="#4EC9A0"/>
+  <text x="497" y="42" font-size="8" fill="#4EC9A0" text-anchor="middle" font-family="monospace">응답</text>
+  <rect x="516" y="15" width="174" height="60" rx="8" fill="#16161A" stroke="#4EC9A0" stroke-width="1.2"/>
+  <text x="603" y="32" font-size="9" fill="#4EC9A0" text-anchor="middle" font-family="monospace">④ 화면 업데이트</text>
+  <rect x="526" y="40" width="154" height="26" rx="5" fill="#1E1E24" stroke="#4EC9A0" stroke-width=".7"/>
+  <text x="603" y="52" font-size="8.5" fill="#4EC9A0" text-anchor="middle" font-family="monospace">✅ 200 OK</text>
+  <text x="603" y="62" font-size="8" fill="#888896" text-anchor="middle" font-family="monospace">{ "id": 42, "status": "created" }</text>
+</svg>`
+
+const STACK_SVG = `<svg width="100%" viewBox="0 0 700 175" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <text x="10" y="154" font-size="10" fill="#888896" font-family="monospace">기본기</text>
+  <rect x="70" y="135" width="600" height="32" rx="8" fill="#1E1E24" stroke="#888896" stroke-width="1.2"/>
+  <text x="370" y="155.5" font-size="12" fill="#888896" text-anchor="middle" font-family="monospace" font-weight="bold">HTML · CSS · JavaScript · TypeScript</text>
+  <text x="90" y="117" font-size="10" fill="#5B9EF7" font-family="monospace">프레임워크</text>
+  <rect x="170" y="100" width="480" height="28" rx="7" fill="#16161A" stroke="#5B9EF7" stroke-width="1.2"/>
+  <text x="410" y="118" font-size="11" fill="#5B9EF7" text-anchor="middle" font-family="monospace">React · Vue · Next.js · Nuxt</text>
+  <text x="140" y="82" font-size="10" fill="#4EC9A0" font-family="monospace">API / 데이터</text>
+  <rect x="230" y="66" width="380" height="26" rx="7" fill="#16161A" stroke="#4EC9A0" stroke-width="1.2"/>
+  <text x="420" y="83" font-size="11" fill="#4EC9A0" text-anchor="middle" font-family="monospace">REST API · axios · React Query</text>
+  <text x="200" y="49" font-size="10" fill="#A07EF0" font-family="monospace">상태관리</text>
+  <rect x="270" y="34" width="240" height="24" rx="6" fill="#16161A" stroke="#A07EF0" stroke-width="1.2"/>
+  <text x="390" y="50" font-size="11" fill="#A07EF0" text-anchor="middle" font-family="monospace">Zustand · Redux · Recoil</text>
+  <rect x="300" y="6" width="180" height="20" rx="6" fill="#16161A" stroke="#F0A050" stroke-width="1.2"/>
+  <text x="390" y="20" font-size="10" fill="#F0A050" text-anchor="middle" font-family="monospace">Vite · Webpack · Vercel</text>
+  <text x="490" y="19" font-size="9" fill="#F0A050" font-family="monospace"> ← 빌드/배포</text>
+</svg>`
+
+const DESIGN_GOOD_SVG = `<svg width="100%" viewBox="20 20 240 152" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(0 -10)">
+  <rect x="26" y="44" width="60" height="18" rx="6" fill="#5B9EF7" opacity=".8"/>
+  <rect x="94" y="44" width="60" height="18" rx="6" fill="#5B9EF7" opacity=".8"/>
+  <rect x="162" y="44" width="60" height="18" rx="6" fill="#5B9EF7" opacity=".8"/>
+  <text x="56" y="56.5" font-size="8" fill="#fff" text-anchor="middle" font-family="monospace">저장</text>
+  <text x="124" y="56.5" font-size="8" fill="#fff" text-anchor="middle" font-family="monospace">수정</text>
+  <text x="192" y="56.5" font-size="8" fill="#fff" text-anchor="middle" font-family="monospace">삭제</text>
+  <text x="26" y="76" font-size="8.5" fill="#4EC9A0" font-family="monospace">일관됨 ✓</text>
+  <line x1="26" y1="80" x2="246" y2="80" stroke="#6B6B7D" stroke-width=".5" stroke-dasharray="2 2"/>
+  <rect x="26" y="87" width="110" height="5" rx="2" fill="#4EC9A0" opacity=".5"/>
+  <rect x="26" y="103" width="85" height="5" rx="2" fill="#4EC9A0" opacity=".3"/>
+  <rect x="26" y="119" width="96" height="5" rx="2" fill="#4EC9A0" opacity=".4"/>
+  <text x="150" y="107" font-size="9" fill="#4EC9A0" font-family="monospace">8px 그리드 ✓</text>
+  <rect x="26" y="137" width="50" height="14" rx="4" fill="#5B9EF7" opacity=".8"/>
+  <rect x="84" y="137" width="50" height="14" rx="4" fill="#252530" stroke="#444455" stroke-width=".8"/>
+  <rect x="142" y="137" width="50" height="14" rx="4" fill="#252530" stroke="#F07070" stroke-width=".8" opacity=".6"/>
+  <text x="51" y="147" font-size="7.5" fill="#fff" text-anchor="middle" font-family="monospace">기본</text>
+  <text x="109" y="147" font-size="7.5" fill="#888896" text-anchor="middle" font-family="monospace">비활성</text>
+  <text x="167" y="147" font-size="7.5" fill="#F07070" text-anchor="middle" font-family="monospace">에러</text>
+  <text x="198" y="159" font-size="8.5" fill="#4EC9A0" font-family="monospace">상태 명시 ✓</text>
+  <rect x="26" y="166" width="70" height="10" rx="3" fill="#4EC9A0" opacity=".15"/>
+  <rect x="102" y="166" width="70" height="10" rx="3" fill="#4EC9A0" opacity=".1"/>
+  <text x="61" y="174" font-size="7.5" fill="#4EC9A0" text-anchor="middle" font-family="monospace">모바일 시안 ✓</text>
+  <text x="137" y="174" font-size="7.5" fill="#4EC9A0" text-anchor="middle" font-family="monospace">빈 상태 ✓</text>
+  </g>
+</svg>`
+
+const DESIGN_BAD_SVG = `<svg width="100%" viewBox="20 20 240 152" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(0 -10)">
+  <rect x="26" y="44" width="60" height="18" rx="2" fill="#5B9EF7" opacity=".8"/>
+  <rect x="94" y="44" width="50" height="22" rx="11" fill="#A07EF0" opacity=".7"/>
+  <rect x="152" y="42" width="70" height="16" rx="0" fill="#F0A050" opacity=".6"/>
+  <text x="56" y="56.5" font-size="8" fill="#fff" text-anchor="middle" font-family="monospace">저장</text>
+  <text x="119" y="57" font-size="8" fill="#fff" text-anchor="middle" font-family="monospace">수정</text>
+  <text x="187" y="53" font-size="8" fill="#fff" text-anchor="middle" font-family="monospace">삭제</text>
+  <text x="26" y="76" font-size="8.5" fill="#F07070" font-family="monospace">제각각 ✗</text>
+  <line x1="26" y1="80" x2="246" y2="80" stroke="#6B6B7D" stroke-width=".5"/>
+  <rect x="26" y="87" width="120" height="5" rx="0" fill="#F07070" opacity=".4"/>
+  <text x="155" y="103" font-size="9" fill="#F07070" font-family="monospace">고정 px ✗</text>
+  <text x="26" y="118" font-size="8" fill="#888896" font-family="monospace">left: 137px top: 263px</text>
+  <rect x="26" y="133" width="170" height="16" rx="4" fill="#252530" stroke="#F07070" stroke-width=".6"/>
+  <text x="111" y="144.5" font-size="8.5" fill="#F07070" text-anchor="middle" font-family="monospace">홍길동</text>
+  <text x="206" y="144" font-size="9" fill="#F07070" font-family="monospace">1줄 고정 ✗</text>
+  <rect x="26" y="161" width="170" height="14" rx="4" fill="#252530" stroke="#F07070" stroke-width=".6" stroke-dasharray="2 1"/>
+  <text x="111" y="171.5" font-size="8" fill="#888896" text-anchor="middle" font-family="monospace">홍길동입니다반갑습니다</text>
+  <text x="206" y="171" font-size="9" fill="#F07070" font-family="monospace">넘침 💥</text>
+  </g>
+</svg>`
+
+const COLLAB_SVG = `<svg width="100%" viewBox="0 0 700 176" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(0 14)">
+  <circle cx="350" cy="55" r="32" fill="#16161A" stroke="#5B9EF7" stroke-width="2"/>
+  <text x="350" y="50" font-size="10" fill="#5B9EF7" text-anchor="middle" font-family="monospace" font-weight="bold">프론트엔드</text>
+  <text x="350" y="63" font-size="10" fill="#5B9EF7" text-anchor="middle" font-family="monospace">개발자</text>
+  <circle cx="120" cy="55" r="26" fill="#16161A" stroke="#F0A050" stroke-width="1.5"/>
+  <text x="120" y="51" font-size="10" fill="#F0A050" text-anchor="middle" font-family="monospace">기획자</text>
+  <text x="120" y="63" font-size="9" fill="#888896" text-anchor="middle" font-family="monospace">명세 공유</text>
+  <path d="M150 55 L316 55" stroke="#F0A050" stroke-width="1" stroke-dasharray="4 2" opacity=".6"/>
+  <circle cx="230" cy="15" r="24" fill="#16161A" stroke="#A07EF0" stroke-width="1.5"/>
+  <text x="230" y="15" font-size="10" fill="#A07EF0" text-anchor="middle" font-family="monospace">디자이너</text>
+  <text x="230" y="26" font-size="9" fill="#888896" text-anchor="middle" font-family="monospace">Figma</text>
+  <path d="M255 20 L320 40" stroke="#A07EF0" stroke-width="1" stroke-dasharray="4 2" opacity=".6"/>
+  <circle cx="230" cy="95" r="24" fill="#16161A" stroke="#4EC9A0" stroke-width="1.5"/>
+  <text x="230" y="94" font-size="10" fill="#4EC9A0" text-anchor="middle" font-family="monospace">퍼블리셔</text>
+  <text x="230" y="106" font-size="9" fill="#888896" text-anchor="middle" font-family="monospace">마크업</text>
+  <path d="M252 90 L320 70" stroke="#4EC9A0" stroke-width="1" stroke-dasharray="4 2" opacity=".6"/>
+  <circle cx="580" cy="55" r="26" fill="#16161A" stroke="#F07070" stroke-width="1.5"/>
+  <text x="580" y="51" font-size="10" fill="#F07070" text-anchor="middle" font-family="monospace">백엔드</text>
+  <text x="580" y="63" font-size="9" fill="#888896" text-anchor="middle" font-family="monospace">API 연동</text>
+  <path d="M552 55 L382 55" stroke="#F07070" stroke-width="1" stroke-dasharray="4 2" opacity=".6"/>
+  <circle cx="470" cy="15" r="24" fill="#16161A" stroke="#A07EF0" stroke-width="1.5"/>
+  <text x="470" y="15" font-size="10" fill="#A07EF0" text-anchor="middle" font-family="monospace">디자이너</text>
+  <text x="470" y="26" font-size="9" fill="#888896" text-anchor="middle" font-family="monospace">QA 검토</text>
+  <path d="M448 20 L380 40" stroke="#A07EF0" stroke-width="1" stroke-dasharray="4 2" opacity=".6"/>
+  <circle cx="470" cy="95" r="24" fill="#16161A" stroke="#F0A050" stroke-width="1.5"/>
+  <text x="470" y="95" font-size="10" fill="#F0A050" text-anchor="middle" font-family="monospace">기획자</text>
+  <text x="470" y="106" font-size="9" fill="#888896" text-anchor="middle" font-family="monospace">피드백</text>
+  <path d="M450 85 L380 70" stroke="#F0A050" stroke-width="1" stroke-dasharray="4 2" opacity=".6"/>
+  </g>
+</svg>`
+
+const FAQ_SVG = `<svg width="100%" viewBox="0 0 700 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="10" width="160" height="44" rx="8" fill="#1E1E24" stroke="#F0A050" stroke-width="1"/>
+  <polygon points="36,54 44,54 40,62" fill="#1E1E24" stroke="#F0A050" stroke-width="1" stroke-linejoin="round"/>
+  <text x="90" y="29" font-size="9" fill="#F0A050" text-anchor="middle" font-family="monospace">디자인대로 했는데</text>
+  <text x="90" y="42" font-size="9" fill="#F0A050" text-anchor="middle" font-family="monospace">왜 달라 보여요? 🤔</text>
+  <rect x="192" y="10" width="150" height="44" rx="8" fill="#1E1E24" stroke="#A07EF0" stroke-width="1"/>
+  <polygon points="218,54 226,54 222,62" fill="#1E1E24" stroke="#A07EF0" stroke-width="1" stroke-linejoin="round"/>
+  <text x="267" y="29" font-size="9" fill="#A07EF0" text-anchor="middle" font-family="monospace">왜 이렇게</text>
+  <text x="267" y="42" font-size="9" fill="#A07EF0" text-anchor="middle" font-family="monospace">오래 걸려요? ⏰</text>
+  <rect x="364" y="10" width="156" height="44" rx="8" fill="#1E1E24" stroke="#4EC9A0" stroke-width="1"/>
+  <polygon points="390,54 398,54 394,62" fill="#1E1E24" stroke="#4EC9A0" stroke-width="1" stroke-linejoin="round"/>
+  <text x="442" y="29" font-size="9" fill="#4EC9A0" text-anchor="middle" font-family="monospace">새로고침하면</text>
+  <text x="442" y="42" font-size="9" fill="#4EC9A0" text-anchor="middle" font-family="monospace">왜 된대요? 🔄</text>
+  <rect x="542" y="10" width="148" height="44" rx="8" fill="#1E1E24" stroke="#5B9EF7" stroke-width="1"/>
+  <polygon points="568,54 576,54 572,62" fill="#1E1E24" stroke="#5B9EF7" stroke-width="1" stroke-linejoin="round"/>
+  <text x="616" y="29" font-size="9" fill="#5B9EF7" text-anchor="middle" font-family="monospace">DB도</text>
+  <text x="616" y="42" font-size="9" fill="#5B9EF7" text-anchor="middle" font-family="monospace">건드려요? 💾</text>
+</svg>`
+
+const GLOSSARY_SVG = `<svg width="100%" viewBox="0 0 700 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="20" width="100" height="50" rx="8" fill="#16161A" stroke="#5B9EF7" stroke-width="1.2"/>
+  <text x="60" y="38" font-size="9" fill="#5B9EF7" text-anchor="middle" font-family="monospace">브라우저</text>
+  <text x="60" y="52" font-size="9" fill="#5B9EF7" text-anchor="middle" font-family="monospace">(프론트)</text>
+  <text x="60" y="64" font-size="8" fill="#888896" text-anchor="middle" font-family="monospace">React App</text>
+  <path d="M112 35 L210 35" stroke="#4EC9A0" stroke-width="1.2" marker-end="url(#gl-arr)"/>
+  <text x="161" y="28" font-size="8" fill="#4EC9A0" text-anchor="middle" font-family="monospace">GET /api/posts</text>
+  <text x="161" y="48" font-size="8" fill="#888896" text-anchor="middle" font-family="monospace">요청(Request)</text>
+  <path d="M210 58 L112 58" stroke="#F0A050" stroke-width="1.2" marker-end="url(#gl-arr2)"/>
+  <text x="161" y="72" font-size="8" fill="#F0A050" text-anchor="middle" font-family="monospace">응답(Response)</text>
+  <rect x="212" y="20" width="100" height="50" rx="8" fill="#16161A" stroke="#F07070" stroke-width="1.2"/>
+  <text x="262" y="38" font-size="9" fill="#F07070" text-anchor="middle" font-family="monospace">서버</text>
+  <text x="262" y="52" font-size="9" fill="#F07070" text-anchor="middle" font-family="monospace">(백엔드)</text>
+  <text x="262" y="64" font-size="8" fill="#888896" text-anchor="middle" font-family="monospace">Node / Spring</text>
+  <path d="M314 45 L360 45" stroke="#888896" stroke-width="1" stroke-dasharray="3 2"/>
+  <rect x="362" y="20" width="160" height="50" rx="8" fill="#16161A" stroke="#4EC9A0" stroke-width="1.2"/>
+  <text x="442" y="36" font-size="9" fill="#4EC9A0" text-anchor="middle" font-family="monospace">JSON 응답</text>
+  <text x="380" y="50" font-size="8" fill="#4EC9A0" font-family="monospace">[{id:1, title:</text>
+  <text x="380" y="62" font-size="8" fill="#4EC9A0" font-family="monospace">"안녕"}, ...]</text>
+  <rect x="544" y="20" width="148" height="50" rx="8" fill="#16161A" stroke="#888896" stroke-width="1.2"/>
+  <text x="618" y="36" font-size="9" fill="#E8E8F0" text-anchor="middle" font-family="monospace">상태코드</text>
+  <text x="556" y="50" font-size="8.5" fill="#4EC9A0" font-family="monospace">200 ✓</text>
+  <text x="556" y="62" font-size="8.5" fill="#F07070" font-family="monospace">404 ✗  500 ✗</text>
+  <defs>
+    <marker id="gl-arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4EC9A0"/></marker>
+    <marker id="gl-arr2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#F0A050"/></marker>
+  </defs>
 </svg>`
 
 const ROLE_ITEMS = [
@@ -446,6 +807,8 @@ export default function AboutFrontendPage() {
         </ul>
       </nav>
 
+      <main id="main-content">
+
       {/* HERO */}
       <section className="fe-hero">
         <div>
@@ -466,6 +829,7 @@ export default function AboutFrontendPage() {
         <div className="ey">what we do</div>
         <h2 className="stitle">프론트엔드 개발자가 하는 일</h2>
         <p className="sdesc">사용자가 눈으로 보고 손으로 만지는 모든 것을 만드는 사람이에요.</p>
+        <div className="fe-illust-wide" dangerouslySetInnerHTML={{ __html: ROLE_SVG }} />
         <div className="role-grid">
           {ROLE_ITEMS.map(item => (
             <div key={item.title} className="role-card">
@@ -481,7 +845,9 @@ export default function AboutFrontendPage() {
         <div className="ey">publisher vs frontend dev</div>
         <h2 className="stitle">퍼블리셔와 뭐가 달라요?</h2>
         <p className="sdesc">같은 HTML/CSS를 쓰지만, 역할의 무게중심이 달라요.</p>
-        <div className="diff-wrap">
+        <div className="illust-side">
+          <div className="fe-illust" dangerouslySetInnerHTML={{ __html: DIFF_SVG }} />
+          <div className="diff-wrap">
           <div className="diff-h">
             <div className="dh pub">퍼블리셔</div>
             <div className="dh fe">프론트엔드 개발자</div>
@@ -494,6 +860,7 @@ export default function AboutFrontendPage() {
               </div>
             ))}
           </div>
+          </div>
         </div>
         <p style={{ marginTop: '10px', fontSize: '14px', color: 'var(--t3)' }}>* 회사에 따라 두 역할이 합쳐지거나 더 세분화되기도 해요</p>
       </section>
@@ -503,20 +870,21 @@ export default function AboutFrontendPage() {
         <div className="ey">team collaboration</div>
         <h2 className="stitle">실제 업무는 이렇게 흘러요</h2>
         <p className="sdesc">기획부터 배포까지, 프론트엔드는 모든 직군과 연결된 중간 다리예요.</p>
+        <div className="fe-illust-wide" style={{ marginBottom: '1.5rem' }} dangerouslySetInnerHTML={{ __html: FLOW_SVG }} />
         <div className="flow-wrap">
           <div className="flow">
             {FLOW_STEPS.map((step, i) => (
-              <>
+              <React.Fragment key={step.role}>
                 <div key={step.role} className={`fs${step.highlight ? ' fe-step' : ''}`}>
-                  <div className="fiw" style={{ color: step.color, fontSize: '20px' }}>{step.icon}</div>
+                  {/* <div className="fiw" style={{ color: step.color, fontSize: '20px' }}>{step.icon}</div> */}
                   <div className="fc">
-                    <div className="frole">{step.highlight ? '★ 프론트엔드' : step.role}</div>
+                    <div className="frole">{step.highlight ? '프론트엔드' : step.role}</div>
                     <div className="fname">{step.name}</div>
                     <div className="fdesc">{step.desc}</div>
                   </div>
                 </div>
                 {i < FLOW_STEPS.length - 1 && <div className="farr">→</div>}
-              </>
+              </React.Fragment>
             ))}
           </div>
         </div>
@@ -527,17 +895,18 @@ export default function AboutFrontendPage() {
         <div className="ey">live demo</div>
         <h2 className="stitle">버튼 하나 누르면 무슨 일이 일어날까?</h2>
         <p className="sdesc">폼을 채우고 버튼을 눌러보세요. 프론트엔드가 백엔드에 보내는 데이터가 어떻게 생겼는지 실시간으로 볼 수 있어요.</p>
+        <div className="fe-illust-wide" style={{ marginBottom: '1.5rem' }} dangerouslySetInnerHTML={{ __html: DEMO_SVG }} />
         <div className="demo-wrap">
           <div className="demo-input">
             <div className="demo-bar">🧑‍💻 회원가입 화면 (프론트엔드가 만든 UI)</div>
             <div className="demo-fields">
               <div className="demo-field">
-                <label>이름</label>
-                <input type="text" placeholder="홍길동" value={demoName} onChange={e => setDemoName(e.target.value)} />
+                <label htmlFor="demo-name">이름</label>
+                <input id="demo-name" type="text" placeholder="홍길동" value={demoName} onChange={e => setDemoName(e.target.value)} />
               </div>
               <div className="demo-field">
-                <label>직군</label>
-                <select value={demoRole} onChange={e => setDemoRole(e.target.value)}>
+                <label htmlFor="demo-role">직군</label>
+                <select id="demo-role" value={demoRole} onChange={e => setDemoRole(e.target.value)}>
                   <option value="">선택하세요</option>
                   <option>기획자</option>
                   <option>디자이너</option>
@@ -547,8 +916,8 @@ export default function AboutFrontendPage() {
                 </select>
               </div>
               <div className="demo-field">
-                <label>이메일</label>
-                <input type="email" placeholder="hello@company.com" value={demoEmail} onChange={e => setDemoEmail(e.target.value)} />
+                <label htmlFor="demo-email">이메일</label>
+                <input id="demo-email" type="email" placeholder="hello@company.com" value={demoEmail} onChange={e => setDemoEmail(e.target.value)} />
               </div>
               <button className="demo-btn" onClick={runDemo}>API 요청 보내기 →</button>
             </div>
@@ -573,6 +942,7 @@ export default function AboutFrontendPage() {
         <div className="ey">tech stack</div>
         <h2 className="stitle">주요 기술 스택</h2>
         <p className="sdesc">하나씩 쌓아가는 거예요. 모든 걸 한 번에 알 필요는 없어요.</p>
+        <div className="fe-illust-wide" style={{ marginBottom: '1.5rem' }} dangerouslySetInnerHTML={{ __html: STACK_SVG }} />
         <div className="sgrid">
           {STACK_ITEMS.map(item => (
             <div key={item.cat} className="scard">
@@ -630,8 +1000,10 @@ export default function AboutFrontendPage() {
         <div className="ey">developer&apos;s eye on design</div>
         <h2 className="stitle">프론트엔드가 시안을 볼 때</h2>
         <p className="sdesc">디자이너와 개발자는 같은 시안을 다른 눈으로 봐요.</p>
-        <div style={{ marginBottom: '.75rem' }}>
-          <div className="dglabel good">✅ 개발자가 좋아하는 시안</div>
+
+        <div className="dglabel good">✅ 개발자가 좋아하는 시안</div>
+        <div className="design-row good">
+          <div className="fe-illust-wide" dangerouslySetInnerHTML={{ __html: DESIGN_GOOD_SVG }} />
           <div className="dgrid">
             {DESIGN_GOOD.map(d => (
               <div key={d.title} className="dcard good">
@@ -642,8 +1014,10 @@ export default function AboutFrontendPage() {
             ))}
           </div>
         </div>
-        <div>
-          <div className="dglabel bad">❌ 개발자가 힘든 시안</div>
+
+        <div className="dglabel bad">❌ 개발자가 힘든 시안</div>
+        <div className="design-row bad">
+          <div className="fe-illust-wide" dangerouslySetInnerHTML={{ __html: DESIGN_BAD_SVG }} />
           <div className="dgrid">
             {DESIGN_BAD.map(d => (
               <div key={d.title} className="dcard bad">
@@ -661,6 +1035,7 @@ export default function AboutFrontendPage() {
         <div className="ey">collaboration tips</div>
         <h2 className="stitle">타 직군과 일할 때 꿀팁!</h2>
         <p className="sdesc">이렇게 해주시면 정말 일하기 좋아요.</p>
+        <div className="fe-illust-wide" style={{ marginBottom: '1.5rem' }} dangerouslySetInnerHTML={{ __html: COLLAB_SVG }} />
         <div className="cgrid">
           {COLLAB.map(c => (
             <div key={c.role} className="cc2">
@@ -681,6 +1056,7 @@ export default function AboutFrontendPage() {
         <div className="ey">frequently asked</div>
         <h2 className="stitle">&quot;왜 그게 안 돼요?&quot; — 자주 받는 질문</h2>
         <p className="sdesc">다른 직군에서 프론트엔드한테 자주 물어보는 것들이에요.</p>
+        <div className="fe-illust-wide" style={{ marginBottom: '1.5rem' }} dangerouslySetInnerHTML={{ __html: FAQ_SVG }} />
         <div className="faq-list">
           {FAQ_DATA.map((item, i) => (
             <div key={i} className="fi">
@@ -700,6 +1076,7 @@ export default function AboutFrontendPage() {
         <div className="ey">glossary</div>
         <h2 className="stitle">용어 사전</h2>
         <p className="sdesc">회의할 때 갑자기 튀어나오는 단어들. 클릭하면 펼쳐져요.</p>
+        {/* <div className="fe-illust-wide" style={{ marginBottom: '1.5rem' }} dangerouslySetInnerHTML={{ __html: GLOSSARY_SVG }} /> */}
         {GLOSS_SECTIONS.map(cat => (
           <div key={cat.label}>
             <div className="gcat">{cat.emoji}&nbsp; {cat.label}</div>
@@ -741,6 +1118,8 @@ export default function AboutFrontendPage() {
           <div className="qa-status"><span className="qa-sdot" /> 질문 대기 중</div>
         </div>
       </section>
+
+      </main>
 
       <footer>// Frontend Developer Intro · 버디버디 스터디 발표자료</footer>
     </div>

@@ -98,47 +98,6 @@ npm run build:icons
 
 도입 시 `scripts/generate-icon-data.mjs`에서 자동 감지 결과 위에 override 값을 덮어씌우면 됩니다.
 
-## 컴포넌트 사용법
-
-### SvgIcon (SVG Sprite 방식)
-
-```tsx
-import { SvgIcon } from '@/components/SvgSprite'
-
-// 기본
-<SvgIcon name="star" />
-
-// 사이즈 지정 (xs | sm | md | lg | xl 또는 숫자 px)
-<SvgIcon name="home" size="lg" />
-<SvgIcon name="home" size={48} />
-
-// 색상 지정 (단색 아이콘만 적용)
-<SvgIcon name="star" color="#ff4444" />
-
-// 접근성 라벨
-<SvgIcon name="search" aria-label="검색" />
-
-// 장식용 (보조기술에서 숨김)
-<SvgIcon name="chevron-right" decorative />
-
-// 멀티컬러 아이콘 — PRESERVE_COLOR_ICONS에 등록된 경우 자동으로 <img> 렌더링
-<SvgIcon name="icon-link-ppt" aria-label="PPT 파일" />
-```
-
-### FontIcon (Icon Font 방식)
-
-```tsx
-import { FontIcon } from '@/components/FontIcon'
-
-// 기본
-<FontIcon name="star" />
-
-// 사이즈 지정 (xs | sm | md | lg | xl)
-<FontIcon name="home" size="lg" />
-
-// 색상 지정
-<FontIcon name="star" color="#ff4444" />
-```
 
 ## 개발 환경 실행
 
