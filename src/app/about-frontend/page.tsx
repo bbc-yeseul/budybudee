@@ -174,6 +174,28 @@ const PAGE_CSS = `
 .pm-full{font-size:12px;color:var(--t3);margin-bottom:.5rem}
 .pm-desc{font-size:13px;color:var(--t2);line-height:1.55}
 .fe-intro footer{border-top:1px solid var(--b);text-align:center;padding:2.5rem;font-family:var(--mono);font-size:14px;color:var(--t3)}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:1.5rem}
+.modal-box{background:var(--bg2);border:1px solid var(--b2);border-radius:var(--r);max-width:680px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 24px 64px rgba(0,0,0,0.6)}
+.modal-box::-webkit-scrollbar{width:4px}.modal-box::-webkit-scrollbar-track{background:transparent}.modal-box::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:2px}
+.modal-head{display:flex;align-items:flex-start;justify-content:space-between;padding:1.5rem 1.5rem 0;gap:1rem}
+.modal-title{font-size:18px;font-weight:700;line-height:1.3}
+.modal-title span{display:block;font-family:var(--mono);font-size:12px;color:var(--t3);font-weight:400;margin-top:3px;letter-spacing:.06em}
+.modal-close{background:var(--bg3);border:1px solid var(--b2);border-radius:6px;color:var(--t2);font-size:18px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all .15s}
+.modal-close:hover{background:var(--bg4);color:var(--t)}
+.modal-body{padding:1.25rem 1.5rem 1.5rem}
+.modal-block{margin-bottom:1.25rem}
+.modal-block:last-child{margin-bottom:0}
+.modal-label{font-family:var(--mono);font-size:12px;color:var(--ac);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem}
+.modal-text{font-size:15px;color:var(--t2);line-height:1.75}
+.modal-text strong{color:var(--t);font-weight:700}
+.modal-tag{display:inline-block;font-family:var(--mono);font-size:12px;padding:2px 8px;border-radius:999px;margin-right:4px;margin-top:4px}
+.modal-divider{border:none;border-top:1px solid var(--b);margin:1.25rem 0}
+.modal-callout{background:var(--acd);border:1px solid rgba(91,158,247,.15);border-radius:var(--rs);padding:.875rem 1rem;font-size:14px;color:var(--t2);line-height:1.7;margin-top:.75rem}
+.modal-list{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-top:.5rem}
+.modal-list li{font-size:14px;color:var(--t2);line-height:1.6;display:flex;gap:.5rem}
+.modal-list li::before{content:'→';color:var(--ac);flex-shrink:0}
+.modal-open-btn{font-family:var(--mono);font-size:13px;padding:5px 12px;border-radius:var(--rs);background:var(--acd);border:1px solid rgba(91,158,247,.2);color:var(--ac);cursor:pointer;transition:all .15s;white-space:nowrap}
+.modal-open-btn:hover{background:rgba(91,158,247,.2);border-color:rgba(91,158,247,.4)}
 @media(max-width:700px){
   .fe-hero{grid-template-columns:1fr;gap:2rem;padding:3rem 1.25rem}
   .fe-sec{padding:3rem 1.25rem}
@@ -756,6 +778,7 @@ export default function AboutFrontendPage() {
   const [demoRole, setDemoRole] = useState('')
   const [demoEmail, setDemoEmail] = useState('')
   const [demoOutput, setDemoOutput] = useState('')
+  const [showModal, setShowModal] = useState(false)
 
   const toggleFaq = (i: number) => setOpenFaq(prev => {
     const n = new Set(prev); n.has(i) ? n.delete(i) : n.add(i); return n
@@ -787,6 +810,7 @@ export default function AboutFrontendPage() {
   }
 
   return (
+    <>
     <div className="fe-intro">
       <style dangerouslySetInnerHTML={{ __html: PAGE_CSS }} />
 
@@ -804,6 +828,7 @@ export default function AboutFrontendPage() {
           <li><a href="#glossary">용어 사전</a></li>
           <li><a href="#qa">Q&amp;A</a></li>
           <li><Link href="/">← 메인</Link></li>
+          <li><button className="modal-open-btn" onClick={() => setShowModal(true)}>React vs Next?</button></li>
         </ul>
       </nav>
 
@@ -1123,5 +1148,66 @@ export default function AboutFrontendPage() {
 
       <footer>// Frontend Developer Intro · 버디버디 스터디 발표자료</footer>
     </div>
+
+    {showModal && (
+      <div className="modal-overlay" onClick={() => setShowModal(false)}>
+        <div className="modal-box" onClick={e => e.stopPropagation()}>
+          <div className="modal-head">
+            <div className="modal-title">
+              React vs Next.js
+              <span>// 발표 후 실제로 나온 질문 정리</span>
+            </div>
+            <button className="modal-close" onClick={() => setShowModal(false)} aria-label="닫기">✕</button>
+          </div>
+          <div className="modal-body">
+
+            <div className="modal-block">
+              {/* <div className="modal-label" style={{ color: 'var(--co)' }}>백엔드 개발자 질문</div> */}
+              <div className="modal-text" style={{ marginBottom: '.75rem' }}>
+                &ldquo;Next.js로 서버 코드도 다 짜면 백엔드가 필요 없지 않나요?&rdquo;
+              </div>
+              <div className="modal-text">
+                <strong>작은 서비스는 맞아요.</strong> Next.js Route Handlers로 API 만들고 DB 붙이면 충분해요.
+              </div>
+              <div className="modal-callout">
+                하지만 이런 상황엔 별도 백엔드가 필요해져요:
+                <ul className="modal-list">
+                  <li><strong>클라이언트가 여러 개일 때</strong> — 웹·모바일 앱이 같은 API를 써야 하면 Next.js API를 공유하기 어려워요</li>
+                  <li><strong>팀이 커질 때</strong> — 백엔드 로직이 복잡해지면 Go·Java 별도 서버가 나아요</li>
+                  <li><strong>Next.js 자체 한계</strong> — Route Handler는 서버리스라서 실행 시간 제한이 있고, 오래 걸리는 작업(배치, 큐)은 못해요</li>
+                </ul>
+              </div>
+              <div className="modal-text" style={{ marginTop: '.75rem' }}>
+                결국 <strong>규모와 구조의 문제</strong>예요. 기술 능력이 아니라, 시스템이 커지면 역할이 자연스럽게 나뉘어요.
+              </div>
+            </div>
+
+            <hr className="modal-divider" />
+
+            <div className="modal-block">
+              {/* <div className="modal-label" style={{ color: 'var(--gn)' }}>퍼블리셔 질문</div> */}
+              <div className="modal-text" style={{ marginBottom: '.75rem' }}>
+                &ldquo;React랑 Next.js 문법이 다른 것 같던데, 왜 구분해서 쓰나요?&rdquo;
+              </div>
+              <div className="modal-text">
+                사실 <strong>문법은 거의 같아요.</strong> <code style={{ fontFamily: 'var(--mono)', fontSize: '13px', color: 'var(--pu)' }}>useState</code>, <code style={{ fontFamily: 'var(--mono)', fontSize: '13px', color: 'var(--pu)' }}>useEffect</code>, 상태관리 — 전부 React 그대로예요. Next.js는 React 코드는 손 안 대고 서버 레이어를 얹은 거예요.
+              </div>
+              <div className="modal-callout">
+                추가된 것은 딱 두 가지예요:<br />
+                <ul className="modal-list" style={{ marginTop: '.5rem' }}>
+                  <li><code style={{ fontFamily: 'var(--mono)', fontSize: '13px', color: 'var(--am)' }}>&apos;use client&apos;</code> — &ldquo;이 컴포넌트는 브라우저에서 실행해&rdquo;라는 표시. 없으면 서버에서 실행돼요.</li>
+                  <li><strong>서버 컴포넌트</strong> — async 함수로 DB를 직접 읽는 등 서버 코드를 컴포넌트 안에 쓸 수 있어요.</li>
+                </ul>
+              </div>
+              <div className="modal-text" style={{ marginTop: '.75rem' }}>
+                그래서 순서는 <strong>React 먼저, Next.js는 그 다음</strong>이에요. React를 알면 Next.js는 규칙 몇 가지만 추가로 익히는 거예요.
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    )}
+    </>
   )
 }
