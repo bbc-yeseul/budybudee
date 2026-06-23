@@ -1185,7 +1185,28 @@ export default function AboutFrontendPage() {
             <hr className="modal-divider" />
 
             <div className="modal-block">
-              {/* <div className="modal-label" style={{ color: 'var(--gn)' }}>퍼블리셔 질문</div> */}
+              <div className="modal-text" style={{ marginBottom: '.75rem' }}>
+                &ldquo;Next.js 쓰는데 React를 왜 따로 설치해요?&rdquo;
+              </div>
+              <div className="modal-text">
+                Next.js는 React를 안에 포함하지 않아요. <strong>&ldquo;React가 옆에 있어야 작동한다&rdquo;고 선언만</strong> 해요 — 이걸 peer dependency라고 해요. 그래서 <code style={{ fontFamily: 'var(--mono)', fontSize: '13px', color: 'var(--gn)' }}>npm install next</code>를 해도 React는 안 딸려오고 따로 설치해야 해요.
+              </div>
+              <div className="modal-callout">
+                <code style={{ fontFamily: 'var(--mono)', fontSize: '13px', color: 'var(--t2)' }}>package.json</code>을 보면 이렇게 세 개가 따로 있어요:<br />
+                <ul className="modal-list" style={{ marginTop: '.5rem' }}>
+                  <li><code style={{ fontFamily: 'var(--mono)', fontSize: '13px', color: 'var(--ac)' }}>&quot;next&quot;</code> — 프레임워크 (라우팅, SSR, 빌드 등)</li>
+                  <li><code style={{ fontFamily: 'var(--mono)', fontSize: '13px', color: 'var(--ac)' }}>&quot;react&quot;</code> — UI 라이브러리 본체</li>
+                  <li><code style={{ fontFamily: 'var(--mono)', fontSize: '13px', color: 'var(--ac)' }}>&quot;react-dom&quot;</code> — React를 브라우저 DOM에 연결해주는 것</li>
+                </ul>
+              </div>
+              <div className="modal-text" style={{ marginTop: '.75rem' }}>
+                이렇게 분리된 덕분에 React 버전만 따로 올리거나, Next.js만 따로 올릴 수 있어요. 서로 독립적으로 버전 관리가 돼요.
+              </div>
+            </div>
+
+            <hr className="modal-divider" />
+
+            <div className="modal-block">
               <div className="modal-text" style={{ marginBottom: '.75rem' }}>
                 &ldquo;React랑 Next.js 문법이 다른 것 같던데, 왜 구분해서 쓰나요?&rdquo;
               </div>
