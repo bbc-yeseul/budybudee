@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>프론트엔드 개발자 직군 소개</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0E0E10;--bg2:#16161A;--bg3:#1E1E24;--bg4:#252530;
+  --b:rgba(255,255,255,0.07);--b2:rgba(255,255,255,0.13);
+  --t:#E8E8F0;--t2:#888896;--t3:#444455;
+  --ac:#5B9EF7;--acd:rgba(91,158,247,0.12);
+  --gn:#4EC9A0;--gnd:rgba(78,201,160,0.12);
+  --am:#F0A050;--amd:rgba(240,160,80,0.12);
+  --co:#F07070;--cod:rgba(240,112,112,0.12);
+  --pu:#A07EF0;--pud:rgba(160,126,240,0.12);
+  --mono:'JetBrains Mono',monospace;
+  --sans:'Noto Sans KR',sans-serif;
+  --r:12px;--rs:7px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t);font-family:var(--sans);font-size:15px;line-height:1.7}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:3px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(14,14,16,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--b);height:52px;padding:0 2rem;display:flex;align-items:center;gap:1.5rem}
+.nav-logo{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--ac);display:flex;align-items:center;gap:8px}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:var(--ac);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.nav-links{display:flex;gap:2px;margin-left:auto;list-style:none;flex-wrap:wrap}
+.nav-links a{font-size:12px;color:var(--t3);text-decoration:none;padding:5px 9px;border-radius:var(--rs);transition:all .15s}
+.nav-links a:hover{color:var(--t);background:var(--bg3)}
+
+/* SECTION */
+.sec{max-width:900px;margin:0 auto;padding:4rem 2rem;border-top:1px solid var(--b)}
+.sec:first-of-type{border-top:none}
+.ey{font-family:var(--mono);font-size:11px;color:var(--t3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.6rem}
+.stitle{font-size:24px;font-weight:700;margin-bottom:.5rem;letter-spacing:-.01em}
+.sdesc{font-size:14px;color:var(--t2);margin-bottom:2rem;line-height:1.75;max-width:600px}
+
+/* HERO */
+.hero{max-width:900px;margin:0 auto;padding:4.5rem 2rem 3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;border-top:none}
+.hero-eye{font-family:var(--mono);font-size:12px;color:var(--ac);letter-spacing:.1em;margin-bottom:1.25rem;opacity:.8}
+.hero-title{font-size:clamp(28px,4.5vw,46px);font-weight:700;line-height:1.12;letter-spacing:-.025em;margin-bottom:1.25rem}
+.hero-title em{font-style:normal;color:var(--ac)}
+.hero-desc{font-size:14px;color:var(--t2);line-height:1.8;margin-bottom:1.5rem}
+.hero-tags{display:flex;flex-wrap:wrap;gap:6px}
+.htag{font-family:var(--mono);font-size:11px;padding:3px 9px;border-radius:999px;border:1px solid var(--b2);color:var(--t3)}
+
+/* illust containers */
+.illust{width:100%;display:flex;justify-content:center;align-items:center}
+.illust-wide{width:100%;margin:1.5rem 0}
+.illust-side{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+
+/* ROLE GRID */
+.role-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.role-card{background:var(--bg2);border:1px solid var(--b);border-radius:var(--r);padding:1.25rem;transition:border-color .2s}
+.role-card:hover{border-color:var(--b2)}
+.role-title{font-weight:700;font-size:14px;margin:10px 0 4px}
+.role-desc{font-size:12px;color:var(--t2);line-height:1.6}
+
+/* DIFF */
+.diff-wrap{border:1px solid var(--b);border-radius:var(--r);overflow:hidden}
+.diff-h{display:grid;grid-template-columns:1fr 1fr}
+.dh{padding:10px 16px;font-family:var(--mono);font-size:12px;font-weight:700;border-bottom:1px solid var(--b);display:flex;align-items:center;gap:8px}
+.dh.pub{background:var(--amd);color:var(--am);border-right:1px solid var(--b)}
+.dh.fe{background:var(--acd);color:var(--ac)}
+.diff-b{display:grid;grid-template-columns:1fr 1fr}
+.dc{padding:12px 16px;font-size:13px;line-height:1.6;border-bottom:1px solid var(--b)}
+.dc:nth-child(odd){border-right:1px solid var(--b);background:rgba(240,160,80,.025)}
+.dc:nth-child(even){background:rgba(91,158,247,.025)}
+.dc:nth-last-child(-n+2){border-bottom:none}
+.dc strong{display:block;font-size:13px;font-weight:700;margin-bottom:3px}
+.dc:nth-child(odd) strong{color:var(--am)}
+.dc:nth-child(even) strong{color:var(--ac)}
+.dc span{color:var(--t2);font-size:12px}
+
+/* FLOW */
+.flow-wrap{overflow-x:auto;padding-bottom:.5rem}
+.flow{display:flex;align-items:flex-start;gap:6px;min-width:600px}
+.fs{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center}
+.fiw{width:44px;height:44px;border-radius:50%;border:1px solid var(--b2);background:var(--bg2);display:flex;align-items:center;justify-content:center;margin-bottom:10px;transition:all .2s}
+.fc{background:var(--bg2);border:1px solid var(--b);border-radius:var(--rs);padding:10px;width:100%}
+.frole{font-family:var(--mono);font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px}
+.fname{font-size:12px;font-weight:700;margin-bottom:2px}
+.fdesc{font-size:11px;color:var(--t2);line-height:1.4}
+.fe-step .fiw{border-color:var(--ac);background:var(--acd)}
+.fe-step .fname{color:var(--ac)}
+.farr{color:var(--t3);margin-top:16px;flex-shrink:0;font-size:16px}
+
+/* STACK */
+.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.scard{background:var(--bg2);border:1px solid var(--b);border-radius:var(--r);padding:1.25rem}
+.scat{font-family:var(--mono);font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+.sbadges{display:flex;flex-wrap:wrap;gap:6px}
+.badge{font-family:var(--mono);font-size:11px;padding:4px 10px;border-radius:var(--rs);border:1px solid}
+.bb{background:var(--acd);color:var(--ac);border-color:rgba(91,158,247,.2)}
+.bg2c{background:var(--gnd);color:var(--gn);border-color:rgba(78,201,160,.2)}
+.ba{background:var(--amd);color:var(--am);border-color:rgba(240,160,80,.2)}
+.bp{background:var(--pud);color:var(--pu);border-color:rgba(160,126,240,.2)}
+.bgr{background:var(--bg3);color:var(--t2);border-color:var(--b2)}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:3px}
+.fi{background:var(--bg2);border:1px solid var(--b);border-radius:var(--rs);overflow:hidden}
+.fq{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;cursor:pointer;user-select:none;transition:background .15s}
+.fq:hover{background:var(--bg3)}
+.fqm{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--co);flex-shrink:0}
+.fqt{font-size:14px;color:var(--t);flex:1;line-height:1.5}
+.fch{color:var(--t3);transition:transform .2s;margin-left:auto;flex-shrink:0;font-size:14px}
+.fch.open{transform:rotate(180deg)}
+.fa{padding:0 16px 13px 44px;font-size:13px;color:var(--t2);line-height:1.7;display:none}
+.fa.vis{display:block}
+
+/* GLOSSARY */
+.gcat{font-size:13px;color:var(--t2);font-weight:700;display:flex;align-items:center;gap:8px;margin:1.5rem 0 8px}
+.glist{display:flex;flex-direction:column;gap:3px}
+.ti{background:var(--bg2);border:1px solid var(--b);border-radius:var(--rs);overflow:hidden}
+.th{display:flex;align-items:center;gap:12px;padding:11px 16px;cursor:pointer;user-select:none;transition:background .15s}
+.th:hover{background:var(--bg3)}
+.tk{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--ac);min-width:110px}
+.ts2{font-size:13px;color:var(--t);flex:1}
+.tch{color:var(--t3);transition:transform .2s;font-size:14px}
+.tch.open{transform:rotate(180deg)}
+.tb{padding:0 16px 13px 138px;font-size:13px;color:var(--t2);line-height:1.7;display:none}
+.tb.vis{display:block}
+.tcode{margin-top:9px;background:#0A0A0C;border:1px solid var(--b);border-radius:var(--rs);padding:10px 14px;font-family:var(--mono);font-size:12px;color:var(--ac);white-space:pre;overflow-x:auto;line-height:1.7}
+
+/* DESIGN */
+.dglabel{font-size:13px;font-weight:700;display:flex;align-items:center;gap:7px;margin-bottom:10px}
+.dglabel.good{color:var(--gn)}.dglabel.bad{color:var(--co)}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:1.5rem}
+.dcard{background:var(--bg2);border:1px solid var(--b);border-radius:var(--r);padding:1rem}
+.dcard.good{border-left:2px solid var(--gn)}
+.dcard.bad{border-left:2px solid var(--co)}
+.dtop{display:flex;align-items:flex-start;gap:8px;margin-bottom:7px}
+.dico{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}
+.dico.g{background:var(--gnd);color:var(--gn)}.dico.b{background:var(--cod);color:var(--co)}
+.dtit{font-size:13px;font-weight:700;color:var(--t);line-height:1.4;padding-top:4px}
+.ddesc{font-size:12px;color:var(--t2);line-height:1.65;margin-bottom:7px}
+.dtag{font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:999px;display:inline-block}
+.dtag.g{background:var(--gnd);color:var(--gn);border:1px solid rgba(78,201,160,.2)}
+.dtag.b{background:var(--cod);color:var(--co);border:1px solid rgba(240,112,112,.2)}
+
+/* COLLAB */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.cc2{background:var(--bg2);border:1px solid var(--b);border-radius:var(--r);padding:1.25rem}
+.cch{display:flex;align-items:center;justify-content:space-between;margin-bottom:.875rem}
+.crole{font-family:var(--mono);font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px}
+.rpm{background:var(--amd);color:var(--am);border:1px solid rgba(240,160,80,.2)}
+.rds{background:var(--pud);color:var(--pu);border:1px solid rgba(160,126,240,.2)}
+.rpb{background:var(--gnd);color:var(--gn);border:1px solid rgba(78,201,160,.2)}
+.rbe{background:var(--cod);color:var(--co);border:1px solid rgba(240,112,112,.2)}
+.ctips{list-style:none;display:flex;flex-direction:column;gap:7px}
+.ctips li{font-size:13px;color:var(--t2);line-height:1.55;display:flex;gap:7px}
+.tm{color:var(--ac);flex-shrink:0}
+.note{margin-top:1.25rem;background:var(--acd);border:1px solid rgba(91,158,247,.15);border-radius:var(--r);padding:1rem 1.25rem;font-size:13px;color:var(--t2);line-height:1.7;display:flex;gap:10px;align-items:flex-start}
+
+/* Q&A */
+.qa-center{background:var(--bg2);border:1px solid var(--b);border-radius:var(--r);padding:3rem 2rem;display:flex;flex-direction:column;align-items:center;gap:12px}
+.qa-av{width:90px;height:90px;border-radius:50%;background:var(--acd);border:2px solid rgba(91,158,247,.3);display:flex;align-items:center;justify-content:center}
+.qa-name{font-size:17px;font-weight:700}
+.qa-status{font-family:var(--mono);font-size:12px;color:var(--t3);display:flex;align-items:center;gap:6px}
+.qa-sdot{width:7px;height:7px;border-radius:50%;background:var(--gn);display:inline-block;animation:pulse 1.5s infinite}
+.demo-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.demo-input,.demo-output{background:var(--bg2);border:1px solid var(--b);border-radius:var(--r);overflow:hidden}
+.demo-bar{background:var(--bg3);padding:9px 14px;border-bottom:1px solid var(--b);font-size:12px;color:var(--t2)}
+.demo-fields{padding:1.25rem;display:flex;flex-direction:column;gap:10px}
+.demo-field label{font-size:12px;color:var(--t2);display:block;margin-bottom:4px}
+.demo-field input,.demo-field select{width:100%;background:var(--bg3);border:1px solid var(--b2);border-radius:var(--rs);padding:8px 11px;color:var(--t);font-size:13px;outline:none;transition:border-color .15s;font-family:var(--sans)}
+.demo-field input:focus,.demo-field select:focus{border-color:var(--ac)}
+.demo-field select option{background:var(--bg3)}
+.demo-btn{width:100%;padding:10px;background:var(--ac);color:#fff;border:none;border-radius:var(--rs);font-size:13px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:opacity .15s}
+.demo-btn:hover{opacity:.85}
+.demo-json{padding:1.25rem;font-family:var(--mono);font-size:12px;line-height:1.85;min-height:180px;white-space:pre-wrap}
+.demo-empty{color:var(--t3);font-size:12px;font-style:italic}
+
+footer{border-top:1px solid var(--b);text-align:center;padding:2.5rem;font-family:var(--mono);font-size:12px;color:var(--t3)}
+
+@media(max-width:700px){
+  .hero{grid-template-columns:1fr;gap:2rem;padding:3rem 1.25rem}
+  .sec{padding:3rem 1.25rem}
+  nav{padding:0 1rem}
+  .nav-links a{padding:4px 6px;font-size:11px}
+  .illust-side{grid-template-columns:1fr}
+  .diff-h,.diff-b{grid-template-columns:1fr}
+  .dh.pub{border-right:none}
+  .dc:nth-child(odd){border-right:none}
+  .tb{padding-left:16px}
+  .fa{padding-left:16px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo"><span class="nav-dot"></span>FE.intro</span>
+  <ul class="nav-links">
+    <li><a href="#role">역할</a></li>
+    <li><a href="#diff">vs 퍼블</a></li>
+    <li><a href="#flow">협업 흐름</a></li>
+    <li><a href="#stack">기술 스택</a></li>
+    <li><a href="#design">디자인 시선</a></li>
+    <li><a href="#collab">협업 팁</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#glossary">용어 사전</a></li>
+    <li><a href="#qa">Q&amp;A</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-eye">// 직군 소개 · Frontend Developer</div>
+    <h1 class="hero-title">브라우저에서<br>살아 숨쉬게<br>만드는 사람<br><em>프론트엔드</em></h1>
+    <p class="hero-desc">디자인을 코드로 옮기고, 서버의 데이터를 화면에 연결하고, 사용자가 클릭하고 스크롤하는 모든 경험을 만듭니다.</p>
+    <div class="hero-tags">
+      <span class="htag">HTML/CSS</span><span class="htag">JavaScript</span><span class="htag">React</span>
+      <span class="htag">API 연동</span><span class="htag">상태관리</span><span class="htag">반응형</span>
+    </div>
+  </div>
+  <!-- 히어로 일러스트: 디자인→코드→화면 변환 -->
+  <div class="illust">
+    <svg width="340" height="260" viewBox="0 0 340 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- 디자인 시안 (왼쪽) -->
+      <rect x="8" y="30" width="90" height="120" rx="8" fill="#1E1E24" stroke="#F0A050" stroke-width="1.5"/>
+      <rect x="18" y="42" width="70" height="10" rx="3" fill="#F0A050" opacity=".4"/>
+      <rect x="18" y="58" width="50" height="6" rx="2" fill="#444455"/>
+      <rect x="18" y="70" width="60" height="6" rx="2" fill="#444455"/>
+      <rect x="18" y="86" width="70" height="28" rx="5" fill="#252530" stroke="#F0A050" stroke-width="1" stroke-dasharray="3 2"/>
+      <text x="53" y="105" font-size="9" fill="#F0A050" text-anchor="middle" font-family="monospace">Figma</text>
+      <rect x="18" y="122" width="30" height="16" rx="4" fill="#F0A050" opacity=".7"/>
+      <rect x="54" y="122" width="30" height="16" rx="4" fill="#252530" stroke="#444455" stroke-width="1"/>
+      <text x="8" y="168" font-size="10" fill="#F0A050" font-family="monospace">디자인 시안</text>
+
+      <!-- 화살표 1 -->
+      <path d="M102 90 L124 90" stroke="#5B9EF7" stroke-width="1.5" stroke-dasharray="4 2"/>
+      <path d="M120 85 L128 90 L120 95" stroke="#5B9EF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <!-- 코드 에디터 (가운데) -->
+      <rect x="130" y="20" width="80" height="140" rx="8" fill="#16161A" stroke="#5B9EF7" stroke-width="1.5"/>
+      <rect x="130" y="20" width="80" height="22" rx="8" fill="#1E1E24"/>
+      <rect x="130" y="34" width="80" height="8" fill="#1E1E24"/>
+      <circle cx="141" cy="31" r="3.5" fill="#FF5F57"/>
+      <circle cx="152" cy="31" r="3.5" fill="#FEBC2E"/>
+      <circle cx="163" cy="31" r="3.5" fill="#28C840"/>
+      <text x="180" y="34" font-size="8" fill="#444455" text-anchor="middle" font-family="monospace">App.jsx</text>
+      <text x="140" y="56" font-size="7.5" fill="#A07EF0" font-family="monospace">import</text>
+      <text x="163" y="56" font-size="7.5" fill="#E8E8F0" font-family="monospace">React</text>
+      <text x="140" y="68" font-size="7.5" fill="#A07EF0" font-family="monospace">function</text>
+      <text x="171" y="68" font-size="7.5" fill="#5B9EF7" font-family="monospace">App</text>
+      <text x="140" y="80" font-size="7.5" fill="#444455" font-family="monospace">// API 호출</text>
+      <text x="140" y="92" font-size="7.5" fill="#5B9EF7" font-family="monospace">fetch</text>
+      <text x="160" y="92" font-size="7.5" fill="#4EC9A0" font-family="monospace">('/api')</text>
+      <text x="140" y="104" font-size="7.5" fill="#A07EF0" font-family="monospace">return</text>
+      <text x="163" y="104" font-size="7.5" fill="#F07070" font-family="monospace">&lt;div&gt;</text>
+      <text x="148" y="116" font-size="7.5" fill="#F07070" font-family="monospace">&lt;h1&gt;</text>
+      <text x="165" y="116" font-size="7.5" fill="#E8E8F0" font-family="monospace">{data}</text>
+      <text x="148" y="128" font-size="7.5" fill="#F07070" font-family="monospace">&lt;/h1&gt;</text>
+      <text x="140" y="140" font-size="7.5" fill="#F07070" font-family="monospace">&lt;/div&gt;</text>
+      <text x="138" y="176" font-size="10" fill="#5B9EF7" font-family="monospace">JS 코드</text>
+
+      <!-- 화살표 2 -->
+      <path d="M214 90 L234 90" stroke="#5B9EF7" stroke-width="1.5" stroke-dasharray="4 2"/>
+      <path d="M230 85 L238 90 L230 95" stroke="#5B9EF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <!-- 브라우저 화면 (오른쪽) -->
+      <rect x="240" y="20" width="92" height="140" rx="8" fill="#16161A" stroke="#4EC9A0" stroke-width="1.5"/>
+      <rect x="240" y="20" width="92" height="26" rx="8" fill="#1E1E24"/>
+      <rect x="240" y="38" width="92" height="8" fill="#1E1E24"/>
+      <circle cx="252" cy="33" r="3.5" fill="#FF5F57"/>
+      <circle cx="263" cy="33" r="3.5" fill="#FEBC2E"/>
+      <circle cx="274" cy="33" r="3.5" fill="#28C840"/>
+      <rect x="282" y="27" width="42" height="12" rx="3" fill="#252530" stroke="#444455" stroke-width=".5"/>
+      <text x="303" y="36.5" font-size="7" fill="#888896" text-anchor="middle" font-family="monospace">localhost</text>
+      <!-- 웹 UI -->
+      <rect x="250" y="52" width="72" height="10" rx="3" fill="#5B9EF7" opacity=".8"/>
+      <text x="286" y="60.5" font-size="7.5" fill="#0E0E10" text-anchor="middle" font-family="monospace" font-weight="bold">안녕하세요!</text>
+      <rect x="250" y="68" width="50" height="5" rx="2" fill="#444455"/>
+      <rect x="250" y="78" width="60" height="5" rx="2" fill="#444455"/>
+      <rect x="250" y="88" width="44" height="5" rx="2" fill="#444455"/>
+      <rect x="250" y="102" width="72" height="22" rx="5" fill="#1E1E24" stroke="#4EC9A0" stroke-width="1"/>
+      <text x="286" y="117" font-size="8" fill="#4EC9A0" text-anchor="middle" font-family="monospace">데이터 카드</text>
+      <rect x="250" y="130" width="30" height="12" rx="4" fill="#5B9EF7" opacity=".8"/>
+      <rect x="286" y="130" width="30" height="12" rx="4" fill="#1E1E24" stroke="#444455" stroke-width=".8"/>
+      <text x="246" y="178" font-size="10" fill="#4EC9A0" font-family="monospace">실제 화면</text>
+
+      <!-- 아래 레이블 -->
+      <text x="170" y="220" font-size="12" fill="#E8E8F0" text-anchor="middle" font-family="monospace" font-weight="bold">디자인 → 코드 → 화면</text>
+      <text x="170" y="238" font-size="10" fill="#888896" text-anchor="middle" font-family="monospace">프론트엔드가 만드는 과정</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 역할 -->
+<section class="sec" id="role">
+  <div class="ey">what we do</div>
+  <h2 class="stitle">프론트엔드 개발자가 하는 일</h2>
+  <p class="sdesc">사용자가 눈으로 보고 손으로 만지는 모든 것을 만드는 사람이에요.</p>
+
+  <!-- 역할 일러스트 -->
+  <div class="illust-wide">
+    <svg width="100%" viewBox="0 0 800 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- 화면 구현 -->
+      <g transform="translate(0,0)">
+        <rect x="10" y="10" width="110" height="140" rx="10" fill="#16161A" stroke="#5B9EF7" stroke-width="1.2"/>
+        <rect x="10" y="10" width="110" height="28" rx="10" fill="#1E1E24"/><rect x="10" y="30" width="110" height="8" fill="#1E1E24"/>
+        <rect x="22" y="48" width="86" height="8" rx="3" fill="#5B9EF7" opacity=".5"/>
+        <rect x="22" y="62" width="60" height="5" rx="2" fill="#252530"/>
+        <rect x="22" y="72" width="74" height="5" rx="2" fill="#252530"/>
+        <rect x="22" y="86" width="86" height="32" rx="6" fill="#252530" stroke="#5B9EF7" stroke-width=".8" stroke-dasharray="3 2"/>
+        <text x="65" y="107" font-size="9" fill="#5B9EF7" text-anchor="middle" font-family="monospace">이미지</text>
+        <rect x="22" y="124" width="36" height="14" rx="5" fill="#5B9EF7" opacity=".7"/>
+        <text x="40" y="134.5" font-size="8" fill="#0E0E10" text-anchor="middle" font-family="monospace">버튼</text>
+        <text x="65" y="158" font-size="11" fill="#5B9EF7" text-anchor="middle" font-family="monospace" font-weight="bold">화면 구현</text>
+      </g>
+      <!-- API 연동 -->
+      <g transform="translate(138,0)">
+        <rect x="10" y="20" width="110" height="110" rx="10" fill="#16161A" stroke="#4EC9A0" stroke-width="1.2"/>
+        <rect x="28" y="38" width="74" height="16" rx="5" fill="#1E1E24" stroke="#4EC9A0" stroke-width=".8"/>
+        <text x="65" y="50" font-size="8.5" fill="#4EC9A0" text-anchor="middle" font-family="monospace">GET /api/users</text>
+        <path d="M65 58 L65 72" stroke="#4EC9A0" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <polygon points="60,70 70,70 65,78" fill="#4EC9A0"/>
+        <rect x="22" y="82" width="82" height="32" rx="6" fill="#252530" stroke="#4EC9A0" stroke-width=".8"/>
+        <text x="63" y="95" font-size="7.5" fill="#4EC9A0" font-family="monospace">name: "김철수"</text>
+        <text x="63" y="107" font-size="7.5" fill="#4EC9A0" font-family="monospace">role: "designer"</text>
+        <text x="65" y="158" font-size="11" fill="#4EC9A0" text-anchor="middle" font-family="monospace" font-weight="bold">API 연동</text>
+      </g>
+      <!-- 인터랙션 -->
+      <g transform="translate(276,0)">
+        <rect x="10" y="10" width="110" height="130" rx="10" fill="#16161A" stroke="#A07EF0" stroke-width="1.2"/>
+        <rect x="28" y="28" width="74" height="20" rx="5" fill="#A07EF0" opacity=".15" stroke="#A07EF0" stroke-width=".8"/>
+        <text x="65" y="41" font-size="8.5" fill="#A07EF0" text-anchor="middle" font-family="monospace">hover ✦</text>
+        <path d="M45 60 Q55 52 65 60 Q75 68 85 60" stroke="#A07EF0" stroke-width="1.5" fill="none"/>
+        <path d="M45 76 Q55 68 65 76 Q75 84 85 76" stroke="#A07EF0" stroke-width="1" fill="none" opacity=".4"/>
+        <rect x="28" y="90" width="74" height="14" rx="4" fill="#252530"/>
+        <rect x="28" y="90" width="40" height="14" rx="4" fill="#A07EF0" opacity=".6"/>
+        <text x="65" y="100.5" font-size="8" fill="#A07EF0" text-anchor="middle" font-family="monospace">progress 55%</text>
+        <circle cx="65" cy="120" r="12" fill="#252530" stroke="#A07EF0" stroke-width="1"/>
+        <text x="65" y="124" font-size="10" fill="#A07EF0" text-anchor="middle">↻</text>
+        <text x="65" y="158" font-size="11" fill="#A07EF0" text-anchor="middle" font-family="monospace" font-weight="bold">인터랙션</text>
+      </g>
+      <!-- 반응형 -->
+      <g transform="translate(414,0)">
+        <rect x="10" y="14" width="70" height="110" rx="8" fill="#16161A" stroke="#F0A050" stroke-width="1.2"/>
+        <rect x="10" y="14" width="70" height="18" rx="8" fill="#1E1E24"/><rect x="10" y="24" width="70" height="8" fill="#1E1E24"/>
+        <rect x="20" y="40" width="50" height="7" rx="3" fill="#F0A050" opacity=".5"/>
+        <rect x="20" y="52" width="40" height="4" rx="2" fill="#252530"/>
+        <rect x="20" y="60" width="45" height="4" rx="2" fill="#252530"/>
+        <rect x="20" y="70" width="50" height="18" rx="4" fill="#252530" stroke="#F0A050" stroke-width=".6" stroke-dasharray="2 2"/>
+        <rect x="20" y="95" width="22" height="10" rx="4" fill="#F0A050" opacity=".6"/>
+        <rect x="48" y="95" width="22" height="10" rx="4" fill="#252530" stroke="#444455" stroke-width=".6"/>
+        <rect x="88" y="28" width="44" height="80" rx="6" fill="#16161A" stroke="#F0A050" stroke-width="1" opacity=".7"/>
+        <rect x="92" y="36" width="36" height="5" rx="2" fill="#F0A050" opacity=".4"/>
+        <rect x="92" y="46" width="28" height="3" rx="1" fill="#252530"/>
+        <rect x="92" y="54" width="32" height="3" rx="1" fill="#252530"/>
+        <rect x="92" y="62" width="36" height="14" rx="3" fill="#252530" stroke="#F0A050" stroke-width=".5" stroke-dasharray="2 2"/>
+        <rect x="92" y="82" width="14" height="8" rx="3" fill="#F0A050" opacity=".5"/>
+        <text x="66" y="158" font-size="11" fill="#F0A050" text-anchor="middle" font-family="monospace" font-weight="bold">반응형</text>
+      </g>
+      <!-- 성능 -->
+      <g transform="translate(552,0)">
+        <rect x="10" y="20" width="110" height="110" rx="10" fill="#16161A" stroke="#F07070" stroke-width="1.2"/>
+        <text x="65" y="46" font-size="10" fill="#F07070" text-anchor="middle" font-family="monospace">로딩 속도</text>
+        <rect x="22" y="52" width="82" height="10" rx="3" fill="#252530"/>
+        <rect x="22" y="52" width="72" height="10" rx="3" fill="#F07070" opacity=".7"/>
+        <text x="65" y="60" font-size="7.5" fill="#0E0E10" text-anchor="middle" font-family="monospace">1.2s → 0.3s ↓</text>
+        <text x="65" y="82" font-size="10" fill="#F07070" text-anchor="middle" font-family="monospace">번들 크기</text>
+        <rect x="22" y="88" width="82" height="10" rx="3" fill="#252530"/>
+        <rect x="22" y="88" width="30" height="10" rx="3" fill="#F07070" opacity=".7"/>
+        <text x="65" y="96" font-size="7.5" fill="#888896" text-anchor="middle" font-family="monospace">최적화 후 36%</text>
+        <circle cx="65" cy="118" r="10" fill="none" stroke="#F07070" stroke-width="6" stroke-dasharray="37 25" transform="rotate(-90 65 118)"/>
+        <text x="65" y="121.5" font-size="8.5" fill="#F07070" text-anchor="middle" font-family="monospace">60</text>
+        <text x="65" y="158" font-size="11" fill="#F07070" text-anchor="middle" font-family="monospace" font-weight="bold">성능 최적화</text>
+      </g>
+      <!-- 디버깅 -->
+      <g transform="translate(690,0)">
+        <rect x="10" y="20" width="100" height="110" rx="10" fill="#16161A" stroke="#888896" stroke-width="1.2"/>
+        <rect x="20" y="34" width="80" height="14" rx="4" fill="#1E1E24" stroke="#444455" stroke-width=".8"/>
+        <text x="60" y="44" font-size="8" fill="#F07070" font-family="monospace" text-anchor="middle">❌ TypeError</text>
+        <text x="60" y="62" font-size="7.5" fill="#888896" text-anchor="middle" font-family="monospace">Cannot read</text>
+        <text x="60" y="73" font-size="7.5" fill="#888896" text-anchor="middle" font-family="monospace">property of null</text>
+        <path d="M30 86 L90 86" stroke="#444455" stroke-width=".8"/>
+        <text x="60" y="100" font-size="7.5" fill="#4EC9A0" text-anchor="middle" font-family="monospace">// 원인 발견!</text>
+        <text x="60" y="112" font-size="7.5" fill="#4EC9A0" text-anchor="middle" font-family="monospace">user?.name ✓</text>
+        <text x="60" y="158" font-size="11" fill="#888896" text-anchor="middle" font-family="monospace" font-weight="bold">디버깅</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="role-grid">
+    <div class="role-card"><div class="role-title">화면 구현</div><div class="role-desc">디자인 시안을 실제 동작하는 웹 화면으로 만듭니다</div></div>
+    <div class="role-card"><div class="role-title">API 연동</div><div class="role-desc">백엔드 서버에서 받은 데이터를 화면에 뿌려줍니다</div></div>
+    <div class="role-card"><div class="role-title">인터랙션</div><div class="role-desc">클릭, 입력, 애니메이션 등 사용자 경험을 코드로 구현합니다</div></div>
+    <div class="role-card"><div class="role-title">반응형</div><div class="role-desc">PC·태블릿·모바일 어디서 봐도 잘 보이도록 대응합니다</div></div>
+    <div class="role-card"><div class="role-title">성능·접근성</div><div class="role-desc">빠르게 로딩되고, 누구나 쓸 수 있도록 최적화합니다</div></div>
+    <div class="role-card"><div class="role-title">디버깅</div><div class="role-desc">버그를 찾아내고, 왜 안 되는지 파악해서 고칩니다</div></div>
+  </div>
+</section>
+
+<!-- 퍼블 vs FE -->
+<section class="sec" id="diff">
+  <div class="ey">publisher vs frontend dev</div>
+  <h2 class="stitle">퍼블리셔와 뭐가 달라요?</h2>
+  <p class="sdesc">같은 HTML/CSS를 쓰지만, 역할의 무게중심이 달라요.</p>
+
+  <div class="illust-side">
+    <div class="illust">
+      <svg width="320" height="200" viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- 퍼블리셔 영역 -->
+        <rect x="8" y="8" width="130" height="156" rx="10" fill="#16161A" stroke="#F0A050" stroke-width="1.5"/>
+        <text x="73" y="30" font-size="11" fill="#F0A050" text-anchor="middle" font-family="monospace" font-weight="bold">퍼블리셔</text>
+        <!-- HTML/CSS 코드 느낌 -->
+        <text x="20" y="50" font-size="8.5" fill="#F07070" font-family="monospace">&lt;header&gt;</text>
+        <text x="28" y="63" font-size="8.5" fill="#4EC9A0" font-family="monospace">.nav { color:</text>
+        <text x="28" y="76" font-size="8.5" fill="#F0A050" font-family="monospace">#fff; }</text>
+        <text x="20" y="89" font-size="8.5" fill="#F07070" font-family="monospace">&lt;/header&gt;</text>
+        <text x="20" y="102" font-size="8.5" fill="#F07070" font-family="monospace">&lt;section&gt;</text>
+        <text x="28" y="115" font-size="8.5" fill="#4EC9A0" font-family="monospace">.card { border-</text>
+        <text x="28" y="128" font-size="8.5" fill="#4EC9A0" font-family="monospace">radius: 8px; }</text>
+        <text x="20" y="141" font-size="8.5" fill="#F07070" font-family="monospace">&lt;/section&gt;</text>
+        <!-- 라벨 -->
+        <rect x="18" y="152" width="50" height="6" rx="2" fill="#F0A050" opacity=".4"/>
+        <rect x="72" y="152" width="50" height="6" rx="2" fill="#F0A050" opacity=".2"/>
+
+        <!-- 화살표 -->
+        <path d="M142 92 L178 92" stroke="#5B9EF7" stroke-width="1.5" stroke-dasharray="4 2"/>
+        <polygon points="173,87 181,92 173,97" fill="#5B9EF7"/>
+        <text x="160" y="108" font-size="9" fill="#5B9EF7" text-anchor="middle" font-family="monospace">+JS</text>
+
+        <!-- FE 영역 -->
+        <rect x="182" y="8" width="130" height="156" rx="10" fill="#16161A" stroke="#5B9EF7" stroke-width="1.5"/>
+        <text x="247" y="30" font-size="11" fill="#5B9EF7" text-anchor="middle" font-family="monospace" font-weight="bold">프론트엔드</text>
+        <!-- React 코드 느낌 -->
+        <text x="194" y="50" font-size="8.5" fill="#A07EF0" font-family="monospace">function App() {</text>
+        <text x="202" y="63" font-size="8.5" fill="#A07EF0" font-family="monospace">const [data,</text>
+        <text x="202" y="76" font-size="8.5" fill="#A07EF0" font-family="monospace">setData] = useState</text>
+        <text x="202" y="89" font-size="8.5" fill="#4EC9A0" font-family="monospace">fetch('/api')</text>
+        <text x="202" y="102" font-size="8.5" fill="#4EC9A0" font-family="monospace">.then(setData)</text>
+        <text x="194" y="115" font-size="8.5" fill="#F07070" font-family="monospace">return &lt;List</text>
+        <text x="202" y="128" font-size="8.5" fill="#F07070" font-family="monospace">data={data}/&gt;</text>
+        <text x="194" y="141" font-size="8.5" fill="#A07EF0" font-family="monospace">}</text>
+        <rect x="194" y="152" width="50" height="6" rx="2" fill="#5B9EF7" opacity=".4"/>
+        <rect x="248" y="152" width="50" height="6" rx="2" fill="#5B9EF7" opacity=".2"/>
+
+        <!-- 핵심 차이 레이블 -->
+        <text x="160" y="185" font-size="10" fill="#888896" text-anchor="middle" font-family="monospace">정적 마크업 → 살아있는 데이터</text>
+      </svg>
+    </div>
+    <div class="diff-wrap">
+      <div class="diff-h">
+        <div class="dh pub">퍼블리셔</div>
+        <div class="dh fe">프론트엔드 개발자</div>
+      </div>
+      <div class="diff-b">
+        <div class="dc"><strong>HTML / CSS 중심</strong><span>마크업, 스타일링, 크로스브라우징</span></div>
+        <div class="dc"><strong>JavaScript / 프레임워크</strong><span>React, Vue로 동적 기능 개발</span></div>
+        <div class="dc"><strong>정적인 화면 제작</strong><span>디자인을 코드로 정밀하게 재현</span></div>
+        <div class="dc"><strong>데이터가 살아있는 화면</strong><span>로그인, 필터링, 실시간 업데이트</span></div>
+        <div class="dc"><strong>디자인 → 코드</strong><span>시각적 완성도에 집중</span></div>
+        <div class="dc"><strong>데이터 + 로직 + 화면</strong><span>API, 상태관리, 라우팅까지</span></div>
+        <div class="dc"><strong>협업: 디자이너</strong><span>시안을 1:1로 구현</span></div>
+        <div class="dc"><strong>협업: 백엔드 + 기획</strong><span>데이터 흐름과 기능 명세를 같이 봄</span></div>
+      </div>
+    </div>
+  </div>
+  <p style="margin-top:10px;font-size:12px;color:var(--t3)">* 회사에 따라 두 역할이 합쳐지거나 더 세분화되기도 해요</p>
+</section>
+
+<!-- 협업 흐름 -->
+<section class="sec" id="flow">
+  <div class="ey">team collaboration</div>
+  <h2 class="stitle">실제 업무는 이렇게 흘러요</h2>
+  <p class="sdesc">기획부터 배포까지, 프론트엔드는 모든 직군과 연결된 중간 다리예요.</p>
+
+  <!-- 협업 흐름 일러스트 -->
+  <div class="illust-wide" style="margin-bottom:1.5rem">
+    <svg width="100%" viewBox="0 0 860 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- 기획 -->
+      <rect x="10" y="20" width="110" height="80" rx="10" fill="#16161A" stroke="#F0A050" stroke-width="1.2"/>
+      <text x="65" y="44" font-size="10" fill="#F0A050" text-anchor="middle" font-family="monospace">📋 기획자</text>
+      <rect x="22" y="52" width="76" height="5" rx="2" fill="#252530"/>
+      <rect x="22" y="62" width="60" height="5" rx="2" fill="#252530"/>
+      <rect x="22" y="72" width="70" height="5" rx="2" fill="#252530"/>
+      <rect x="22" y="82" width="50" height="5" rx="2" fill="#F0A050" opacity=".4"/>
+      <text x="65" y="118" font-size="9.5" fill="#F0A050" text-anchor="middle" font-family="monospace">요구사항 정의</text>
+      <!-- 화살표 -->
+      <path d="M122 60 L148 60" stroke="#888896" stroke-width="1.2" stroke-dasharray="3 2"/>
+      <polygon points="144,56 152,60 144,64" fill="#888896"/>
+      <!-- 디자이너 -->
+      <rect x="152" y="20" width="110" height="80" rx="10" fill="#16161A" stroke="#A07EF0" stroke-width="1.2"/>
+      <text x="207" y="44" font-size="10" fill="#A07EF0" text-anchor="middle" font-family="monospace">🎨 디자이너</text>
+      <rect x="164" y="52" width="76" height="38" rx="5" fill="#1E1E24" stroke="#A07EF0" stroke-width=".6" stroke-dasharray="2 2"/>
+      <rect x="172" y="58" width="60" height="8" rx="3" fill="#A07EF0" opacity=".3"/>
+      <rect x="172" y="70" width="44" height="5" rx="2" fill="#252530"/>
+      <rect x="172" y="78" width="52" height="5" rx="2" fill="#252530"/>
+      <text x="207" y="118" font-size="9.5" fill="#A07EF0" text-anchor="middle" font-family="monospace">Figma 시안</text>
+      <!-- 화살표 -->
+      <path d="M264 60 L290 60" stroke="#888896" stroke-width="1.2" stroke-dasharray="3 2"/>
+      <polygon points="286,56 294,60 286,64" fill="#888896"/>
+      <!-- 퍼블리셔 -->
+      <rect x="294" y="20" width="110" height="80" rx="10" fill="#16161A" stroke="#4EC9A0" stroke-width="1.2"/>
+      <text x="349" y="44" font-size="10" fill="#4EC9A0" text-anchor="middle" font-family="monospace">📄 퍼블리셔</text>
+      <text x="306" y="60" font-size="8" fill="#F07070" font-family="monospace">&lt;div class=</text>
+      <text x="306" y="72" font-size="8" fill="#4EC9A0" font-family="monospace">"card"&gt;</text>
+      <text x="306" y="84" font-size="8" fill="#F07070" font-family="monospace">&lt;/div&gt;</text>
+      <text x="349" y="118" font-size="9.5" fill="#4EC9A0" text-anchor="middle" font-family="monospace">HTML/CSS 마크업</text>
+      <!-- 화살표 -->
+      <path d="M406 60 L432 60" stroke="#888896" stroke-width="1.2" stroke-dasharray="3 2"/>
+      <polygon points="428,56 436,60 428,64" fill="#888896"/>
+      <!-- 프론트엔드 (강조) -->
+      <rect x="436" y="10" width="130" height="100" rx="10" fill="#16161A" stroke="#5B9EF7" stroke-width="2"/>
+      <rect x="436" y="10" width="130" height="100" rx="10" fill="rgba(91,158,247,0.04)"/>
+      <text x="501" y="36" font-size="10" fill="#5B9EF7" text-anchor="middle" font-family="monospace" font-weight="bold">⭐ 프론트엔드</text>
+      <text x="448" y="52" font-size="8" fill="#A07EF0" font-family="monospace">useState()</text>
+      <text x="448" y="64" font-size="8" fill="#4EC9A0" font-family="monospace">fetch('/api')</text>
+      <text x="448" y="76" font-size="8" fill="#F07070" font-family="monospace">&lt;Component/&gt;</text>
+      <text x="448" y="88" font-size="8" fill="#5B9EF7" font-family="monospace">router.push()</text>
+      <text x="501" y="128" font-size="9.5" fill="#5B9EF7" text-anchor="middle" font-family="monospace" font-weight="bold">기능 개발</text>
+      <!-- 화살표 -->
+      <path d="M568 60 L594 60" stroke="#888896" stroke-width="1.2" stroke-dasharray="3 2"/>
+      <polygon points="590,56 598,60 590,64" fill="#888896"/>
+      <!-- 백엔드 -->
+      <rect x="598" y="20" width="110" height="80" rx="10" fill="#16161A" stroke="#F07070" stroke-width="1.2"/>
+      <text x="653" y="44" font-size="10" fill="#F07070" text-anchor="middle" font-family="monospace">🖥 백엔드</text>
+      <rect x="610" y="52" width="82" height="14" rx="4" fill="#1E1E24" stroke="#F07070" stroke-width=".6"/>
+      <text x="651" y="62.5" font-size="8" fill="#F07070" text-anchor="middle" font-family="monospace">GET /api/posts</text>
+      <rect x="610" y="72" width="82" height="20" rx="4" fill="#252530"/>
+      <text x="651" y="83" font-size="7.5" fill="#4EC9A0" text-anchor="middle" font-family="monospace">{ data: [...] }</text>
+      <text x="653" y="118" font-size="9.5" fill="#F07070" text-anchor="middle" font-family="monospace">API 서버</text>
+      <!-- 화살표 -->
+      <path d="M710 60 L736 60" stroke="#888896" stroke-width="1.2" stroke-dasharray="3 2"/>
+      <polygon points="732,56 740,60 732,64" fill="#888896"/>
+      <!-- 배포 -->
+      <rect x="740" y="20" width="110" height="80" rx="10" fill="#16161A" stroke="#888896" stroke-width="1.2"/>
+      <text x="795" y="44" font-size="10" fill="#E8E8F0" text-anchor="middle" font-family="monospace">🚀 배포</text>
+      <rect x="752" y="52" width="82" height="16" rx="4" fill="#1E1E24" stroke="#4EC9A0" stroke-width=".6"/>
+      <text x="793" y="63" font-size="8" fill="#4EC9A0" text-anchor="middle" font-family="monospace">✓ Build success</text>
+      <rect x="752" y="74" width="82" height="16" rx="4" fill="#4EC9A0" opacity=".2" stroke="#4EC9A0" stroke-width=".5"/>
+      <text x="793" y="85" font-size="8" fill="#4EC9A0" text-anchor="middle" font-family="monospace">사용자에게 전달</text>
+      <text x="795" y="118" font-size="9.5" fill="#888896" text-anchor="middle" font-family="monospace">빌드 &amp; 배포</text>
+    </svg>
+  </div>
+
+  <div class="flow-wrap">
+    <div class="flow">
+      <div class="fs"><div class="fiw" style="color:var(--am);font-size:20px">📋</div><div class="fc"><div class="frole">기획자</div><div class="fname">요구사항 정의</div><div class="fdesc">기능 명세, 화면 흐름</div></div></div>
+      <div class="farr">→</div>
+      <div class="fs"><div class="fiw" style="color:var(--pu);font-size:20px">🎨</div><div class="fc"><div class="frole">디자이너</div><div class="fname">시안 제작</div><div class="fdesc">Figma UI 설계</div></div></div>
+      <div class="farr">→</div>
+      <div class="fs"><div class="fiw" style="color:var(--gn);font-size:20px">📄</div><div class="fc"><div class="frole">퍼블리셔</div><div class="fname">마크업</div><div class="fdesc">HTML/CSS 구현</div></div></div>
+      <div class="farr">→</div>
+      <div class="fs fe-step"><div class="fiw" style="font-size:20px">⭐</div><div class="fc"><div class="frole">★ 프론트엔드</div><div class="fname">기능 개발</div><div class="fdesc">API연동·상태관리</div></div></div>
+      <div class="farr">→</div>
+      <div class="fs"><div class="fiw" style="color:var(--co);font-size:20px">🖥</div><div class="fc"><div class="frole">백엔드</div><div class="fname">API 제공</div><div class="fdesc">DB·서버 운영</div></div></div>
+      <div class="farr">→</div>
+      <div class="fs"><div class="fiw" style="color:var(--ac);font-size:20px">🚀</div><div class="fc"><div class="frole">배포</div><div class="fname">서비스 오픈</div><div class="fdesc">빌드·QA·배포</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 코드 체험 -->
+<section class="sec" id="demo">
+  <div class="ey">live demo</div>
+  <h2 class="stitle">버튼 하나 누르면 무슨 일이 일어날까?</h2>
+  <p class="sdesc">폼을 채우고 버튼을 눌러보세요. 프론트엔드가 백엔드에 보내는 데이터가 어떻게 생겼는지 실시간으로 볼 수 있어요.</p>
+
+  <div class="illust-wide" style="margin-bottom:1.5rem">
+    <svg width="100%" viewBox="0 0 700 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- 1. 사용자 입력 -->
+      <rect x="10" y="20" width="120" height="55" rx="8" fill="#16161A" stroke="#5B9EF7" stroke-width="1.2"/>
+      <text x="70" y="38" font-size="9" fill="#5B9EF7" text-anchor="middle" font-family="monospace">① 사용자 입력</text>
+      <rect x="20" y="44" width="90" height="11" rx="3" fill="#252530" stroke="#444455" stroke-width=".6"/>
+      <text x="65" y="53" font-size="8" fill="#888896" text-anchor="middle" font-family="monospace">이름 입력...</text>
+      <rect x="20" y="58" width="50" height="10" rx="4" fill="#5B9EF7" opacity=".8"/>
+      <text x="45" y="65.5" font-size="7.5" fill="#fff" text-anchor="middle" font-family="monospace">제출</text>
+      <!-- 화살표 -->
+      <path d="M132 47 L158 47" stroke="#4EC9A0" stroke-width="1.2" stroke-dasharray="3 2"/>
+      <polygon points="154,43 162,47 154,51" fill="#4EC9A0"/>
+      <text x="145" y="42" font-size="8" fill="#4EC9A0" text-anchor="middle" font-family="monospace">JS 처리</text>
+      <!-- 2. JS가 JSON 만들기 -->
+      <rect x="162" y="10" width="150" height="70" rx="8" fill="#16161A" stroke="#4EC9A0" stroke-width="1.2"/>
+      <text x="237" y="27" font-size="9" fill="#4EC9A0" text-anchor="middle" font-family="monospace">② JSON 생성</text>
+      <text x="172" y="40" font-size="8" fill="#A07EF0" font-family="monospace">const body = {</text>
+      <text x="180" y="52" font-size="8" fill="#F07070" font-family="monospace">name: "홍길동",</text>
+      <text x="180" y="63" font-size="8" fill="#F07070" font-family="monospace">role: "기획자"</text>
+      <text x="172" y="74" font-size="8" fill="#A07EF0" font-family="monospace">}</text>
+      <!-- 화살표 -->
+      <path d="M314 47 L340 47" stroke="#F0A050" stroke-width="1.2" stroke-dasharray="3 2"/>
+      <polygon points="336,43 344,47 336,51" fill="#F0A050"/>
+      <text x="327" y="42" font-size="8" fill="#F0A050" text-anchor="middle" font-family="monospace">HTTP 요청</text>
+      <!-- 3. 서버로 전송 -->
+      <rect x="344" y="15" width="130" height="60" rx="8" fill="#16161A" stroke="#F0A050" stroke-width="1.2"/>
+      <text x="409" y="32" font-size="9" fill="#F0A050" text-anchor="middle" font-family="monospace">③ 서버로 전송</text>
+      <text x="354" y="46" font-size="8" fill="#F0A050" font-family="monospace">POST /api/users</text>
+      <text x="354" y="58" font-size="8" fill="#888896" font-family="monospace">Content-Type:</text>
+      <text x="354" y="69" font-size="8" fill="#888896" font-family="monospace">application/json</text>
+      <!-- 화살표 -->
+      <path d="M476 47 L502 47" stroke="#4EC9A0" stroke-width="1.2" stroke-dasharray="3 2"/>
+      <polygon points="498,43 506,47 498,51" fill="#4EC9A0"/>
+      <text x="489" y="42" font-size="8" fill="#4EC9A0" text-anchor="middle" font-family="monospace">응답</text>
+      <!-- 4. 응답 처리 -->
+      <rect x="506" y="15" width="184" height="60" rx="8" fill="#16161A" stroke="#4EC9A0" stroke-width="1.2"/>
+      <text x="598" y="32" font-size="9" fill="#4EC9A0" text-anchor="middle" font-family="monospace">④ 화면 업데이트</text>
+      <rect x="516" y="40" width="164" height="26" rx="5" fill="#1E1E24" stroke="#4EC9A0" stroke-width=".7"/>
+      <text x="598" y="52" font-size="8.5" fill="#4EC9A0" text-anchor="middle" font-family="monospace">✅ 200 OK</text>
+      <text x="598" y="62" font-size="8" fill="#888896" text-anchor="middle" font-family="monospace">{ "id": 42, "status": "created" }</text>
+    </svg>
+  </div>
+
+  <div class="demo-wrap">
+    <div class="demo-input">
+      <div class="demo-bar">🧑‍💻 회원가입 화면 (프론트엔드가 만든 UI)</div>
+      <div class="demo-fields">
+        <div class="demo-field">
+          <label>이름</label>
+          <input type="text" id="d-name" placeholder="홍길동">
+        </div>
+        <div class="demo-field">
+          <label>직군</label>
+          <select id="d-role">
+            <option value="">선택하세요</option>
+            <option>기획자</option>
+            <option>디자이너</option>
+            <option>퍼블리셔</option>
+            <option>프론트엔드 개발자</option>
+            <option>백엔드 개발자</option>
+          </select>
+        </div>
+        <div class="demo-field">
+          <label>이메일</label>
+          <input type="email" id="d-email" placeholder="hello@company.com">
+        </div>
+        <button class="demo-btn" onclick="runDemo()">API 요청 보내기 →</button>
+      </div>
+    </div>
+    <div class="demo-output">
+      <div class="demo-bar">🖥 백엔드로 전송되는 데이터 (JSON)</div>
+      <div class="demo-json" id="demo-json">
+        <span class="demo-empty">← 폼을 채우고 버튼을 눌러보세요</span>
+      </div>
+    </div>
+  </div>
+  <p style="margin-top:.75rem;font-size:12px;color:var(--t3);font-family:var(--mono)">// 실제로는 이 JSON이 HTTP POST 요청으로 서버에 전송되고, 서버는 DB에 저장해요</p>
+</section>
+
+<!-- 스택 -->
+<section class="sec" id="stack">
+  <div class="ey">tech stack</div>
+  <h2 class="stitle">주요 기술 스택</h2>
+  <p class="sdesc">하나씩 쌓아가는 거예요. 모든 걸 한 번에 알 필요는 없어요.</p>
+  <div class="illust-wide" style="margin-bottom:1.5rem">
+    <svg width="100%" viewBox="0 0 700 175" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- 기본기 (바닥) -->
+      <rect x="10" y="135" width="680" height="32" rx="8" fill="#1E1E24" stroke="#888896" stroke-width="1.2"/>
+      <text x="350" y="155.5" font-size="12" fill="#888896" text-anchor="middle" font-family="monospace" font-weight="bold">HTML · CSS · JavaScript · TypeScript</text>
+      <text x="10" y="129" font-size="10" fill="#888896" font-family="monospace">기본기</text>
+      <!-- 프레임워크 -->
+      <rect x="70" y="100" width="560" height="28" rx="7" fill="#16161A" stroke="#5B9EF7" stroke-width="1.2"/>
+      <text x="350" y="118" font-size="11" fill="#5B9EF7" text-anchor="middle" font-family="monospace">React · Vue · Next.js · Nuxt</text>
+      <text x="70" y="94" font-size="10" fill="#5B9EF7" font-family="monospace">프레임워크</text>
+      <!-- API / 데이터 -->
+      <rect x="140" y="66" width="420" height="26" rx="7" fill="#16161A" stroke="#4EC9A0" stroke-width="1.2"/>
+      <text x="350" y="83" font-size="11" fill="#4EC9A0" text-anchor="middle" font-family="monospace">REST API · axios · React Query</text>
+      <text x="140" y="60" font-size="10" fill="#4EC9A0" font-family="monospace">API / 데이터</text>
+      <!-- 상태관리 -->
+      <rect x="220" y="34" width="260" height="24" rx="6" fill="#16161A" stroke="#A07EF0" stroke-width="1.2"/>
+      <text x="350" y="50" font-size="11" fill="#A07EF0" text-anchor="middle" font-family="monospace">Zustand · Redux · Recoil</text>
+      <text x="220" y="28" font-size="10" fill="#A07EF0" font-family="monospace">상태관리</text>
+      <!-- 빌드 / 배포 (꼭대기) -->
+      <rect x="295" y="6" width="210" height="20" rx="6" fill="#16161A" stroke="#F0A050" stroke-width="1.2"/>
+      <text x="400" y="20" font-size="10" fill="#F0A050" text-anchor="middle" font-family="monospace">Vite · Webpack · Vercel</text>
+      <text x="505" y="20" font-size="9" fill="#F0A050" font-family="monospace"> ← 빌드/배포</text>
+    </svg>
+  </div>
+  <div class="sgrid">
+    <div class="scard"><div class="scat">기본기</div><div class="sbadges"><span class="badge bgr">HTML</span><span class="badge bgr">CSS</span><span class="badge bgr">JavaScript</span><span class="badge bgr">TypeScript</span></div></div>
+    <div class="scard"><div class="scat">프레임워크</div><div class="sbadges"><span class="badge bb">React</span><span class="badge bb">Vue</span><span class="badge bb">Next.js</span></div></div>
+    <div class="scard"><div class="scat">API / 데이터</div><div class="sbadges"><span class="badge bg2c">REST API</span><span class="badge bg2c">axios</span><span class="badge bg2c">React Query</span></div></div>
+    <div class="scard"><div class="scat">상태관리</div><div class="sbadges"><span class="badge bp">Zustand</span><span class="badge bp">Redux</span><span class="badge bp">Recoil</span></div></div>
+    <div class="scard"><div class="scat">빌드 / 배포</div><div class="sbadges"><span class="badge ba">Vite</span><span class="badge ba">Webpack</span><span class="badge ba">Vercel</span></div></div>
+    <div class="scard"><div class="scat">협업 도구</div><div class="sbadges"><span class="badge bgr">Git</span><span class="badge bgr">GitHub</span><span class="badge bgr">Figma</span><span class="badge bgr">Jira</span></div></div>
+  </div>
+</section>
+
+<!-- 디자인 시선 -->
+<section class="sec" id="design">
+  <div class="ey">developer's eye on design</div>
+  <h2 class="stitle">프론트엔드가 시안을 볼 때</h2>
+  <p class="sdesc">디자이너와 개발자는 같은 시안을 다른 눈으로 봐요.</p>
+
+  <div class="illust-wide" style="margin-bottom:1.75rem">
+    <svg width="100%" viewBox="0 0 700 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- 좋은 시안 -->
+      <rect x="10" y="10" width="320" height="148" rx="10" fill="#16161A" stroke="#4EC9A0" stroke-width="1.5"/>
+      <text x="170" y="32" font-size="11" fill="#4EC9A0" text-anchor="middle" font-family="monospace" font-weight="bold">✅ 개발자가 좋아하는 시안</text>
+      <!-- 일관된 버튼들 -->
+      <rect x="26" y="44" width="60" height="18" rx="6" fill="#5B9EF7" opacity=".8"/>
+      <rect x="94" y="44" width="60" height="18" rx="6" fill="#5B9EF7" opacity=".8"/>
+      <rect x="162" y="44" width="60" height="18" rx="6" fill="#5B9EF7" opacity=".8"/>
+      <text x="56" y="56.5" font-size="8" fill="#fff" text-anchor="middle" font-family="monospace">저장</text>
+      <text x="124" y="56.5" font-size="8" fill="#fff" text-anchor="middle" font-family="monospace">수정</text>
+      <text x="192" y="56.5" font-size="8" fill="#fff" text-anchor="middle" font-family="monospace">삭제</text>
+      <text x="240" y="56.5" font-size="9" fill="#4EC9A0" font-family="monospace">일관됨 ✓</text>
+      <!-- 8px 그리드 -->
+      <line x1="26" y1="74" x2="306" y2="74" stroke="#444455" stroke-width=".5" stroke-dasharray="2 2"/>
+      <rect x="26" y="78" width="130" height="5" rx="2" fill="#4EC9A0" opacity=".5"/>
+      <rect x="26" y="91" width="100" height="5" rx="2" fill="#4EC9A0" opacity=".3"/>
+      <rect x="26" y="104" width="116" height="5" rx="2" fill="#4EC9A0" opacity=".4"/>
+      <text x="180" y="92" font-size="9" fill="#4EC9A0" font-family="monospace">8px 그리드 ✓</text>
+      <!-- 상태 시안 -->
+      <rect x="26" y="118" width="50" height="14" rx="4" fill="#5B9EF7" opacity=".8"/>
+      <rect x="84" y="118" width="50" height="14" rx="4" fill="#252530" stroke="#444455" stroke-width=".8"/>
+      <rect x="142" y="118" width="50" height="14" rx="4" fill="#252530" stroke="#F07070" stroke-width=".8" opacity=".6"/>
+      <text x="51" y="128" font-size="7.5" fill="#fff" text-anchor="middle" font-family="monospace">기본</text>
+      <text x="109" y="128" font-size="7.5" fill="#888896" text-anchor="middle" font-family="monospace">비활성</text>
+      <text x="167" y="128" font-size="7.5" fill="#F07070" text-anchor="middle" font-family="monospace">에러</text>
+      <text x="220" y="128" font-size="9" fill="#4EC9A0" font-family="monospace">상태 명시 ✓</text>
+      <rect x="26" y="142" width="84" height="10" rx="3" fill="#4EC9A0" opacity=".15"/>
+      <rect x="118" y="142" width="84" height="10" rx="3" fill="#4EC9A0" opacity=".1"/>
+      <text x="68" y="150" font-size="7.5" fill="#4EC9A0" text-anchor="middle" font-family="monospace">모바일 시안 ✓</text>
+      <text x="160" y="150" font-size="7.5" fill="#4EC9A0" text-anchor="middle" font-family="monospace">빈 상태 ✓</text>
+
+      <!-- 나쁜 시안 -->
+      <rect x="370" y="10" width="320" height="148" rx="10" fill="#16161A" stroke="#F07070" stroke-width="1.5"/>
+      <text x="530" y="32" font-size="11" fill="#F07070" text-anchor="middle" font-family="monospace" font-weight="bold">❌ 개발자가 힘든 시안</text>
+      <!-- 제각각 버튼 -->
+      <rect x="386" y="44" width="60" height="18" rx="2" fill="#5B9EF7" opacity=".8"/>
+      <rect x="454" y="44" width="50" height="22" rx="11" fill="#A07EF0" opacity=".7"/>
+      <rect x="512" y="42" width="70" height="16" rx="0" fill="#F0A050" opacity=".6"/>
+      <text x="416" y="56.5" font-size="8" fill="#fff" text-anchor="middle" font-family="monospace">저장</text>
+      <text x="479" y="57" font-size="8" fill="#fff" text-anchor="middle" font-family="monospace">수정</text>
+      <text x="547" y="53" font-size="8" fill="#fff" text-anchor="middle" font-family="monospace">삭제</text>
+      <text x="596" y="57" font-size="9" fill="#F07070" font-family="monospace">제각각 ✗</text>
+      <!-- 픽셀 고정 -->
+      <line x1="386" y1="74" x2="666" y2="74" stroke="#444455" stroke-width=".5"/>
+      <rect x="386" y="78" width="137" height="5" rx="0" fill="#F07070" opacity=".4"/>
+      <text x="540" y="90" font-size="9" fill="#F07070" font-family="monospace">고정 px ✗</text>
+      <text x="386" y="103" font-size="8" fill="#888896" font-family="monospace">left: 137px top: 263px</text>
+      <!-- 텍스트 1줄만 -->
+      <rect x="386" y="114" width="200" height="16" rx="4" fill="#252530" stroke="#F07070" stroke-width=".6"/>
+      <text x="486" y="125.5" font-size="8.5" fill="#F07070" text-anchor="middle" font-family="monospace">홍길동</text>
+      <text x="596" y="125" font-size="9" fill="#F07070" font-family="monospace">1줄 고정 ✗</text>
+      <rect x="386" y="138" width="200" height="14" rx="4" fill="#252530" stroke="#F07070" stroke-width=".6" stroke-dasharray="2 1"/>
+      <text x="486" y="148.5" font-size="8" fill="#888896" text-anchor="middle" font-family="monospace">홍길동입니다반갑습니다여러분</text>
+      <text x="596" y="148" font-size="9" fill="#F07070" font-family="monospace">넘침 💥</text>
+    </svg>
+  </div>
+
+  <div style="margin-bottom:.75rem">
+    <div class="dglabel good">✅ 개발자가 좋아하는 시안</div>
+    <div class="dgrid">
+      <div class="dcard good"><div class="dtop"><div class="dico g">✓</div><div class="dtit">컴포넌트 단위로 일관된 스타일</div></div><div class="ddesc">버튼, 카드가 전 페이지에서 동일하면 한 번 만들어두고 재사용 가능해요.</div><span class="dtag g">재사용 가능 · 속도 ↑</span></div>
+      <div class="dcard good"><div class="dtop"><div class="dico g">✓</div><div class="dtit">8px 그리드 기반 여백</div></div><div class="ddesc">여백이 8, 16, 24px처럼 배수로 떨어지면 CSS로 옮기기 쉬워요.</div><span class="dtag g">구현 용이 · 일관성 ↑</span></div>
+      <div class="dcard good"><div class="dtop"><div class="dico g">✓</div><div class="dtit">빈 상태·에러 화면 포함</div></div><div class="ddesc">데이터가 없을 때, 에러날 때 화면이 시안에 있으면 누락 없이 구현돼요.</div><span class="dtag g">예외처리 명확</span></div>
+      <div class="dcard good"><div class="dtop"><div class="dico g">✓</div><div class="dtit">모바일 시안도 함께</div></div><div class="ddesc">PC만 있으면 모바일을 개발자가 스스로 판단해야 해요.</div><span class="dtag g">반응형 정확도 ↑</span></div>
+    </div>
+  </div>
+  <div>
+    <div class="dglabel bad">❌ 개발자가 힘든 시안</div>
+    <div class="dgrid">
+      <div class="dcard bad"><div class="dtop"><div class="dico b">✗</div><div class="dtit">페이지마다 다른 버튼 스타일</div></div><div class="ddesc">재사용이 안 되고 코드가 복잡해져요.</div><span class="dtag b">컴포넌트 불가 · 작업량 ↑</span></div>
+      <div class="dcard bad"><div class="dtop"><div class="dico b">✗</div><div class="dtit">픽셀 단위 절대 위치</div></div><div class="ddesc">"좌상단에서 137px" 같은 고정 위치는 화면 크기 바뀌면 무너져요.</div><span class="dtag b">반응형 불가</span></div>
+      <div class="dcard bad"><div class="dtop"><div class="dico b">✗</div><div class="dtit">텍스트 항상 1줄 고정</div></div><div class="ddesc">실제 데이터는 길이가 달라요. 긴 텍스트 대응이 없으면 레이아웃이 터져요.</div><span class="dtag b">예외 케이스 누락</span></div>
+      <div class="dcard bad"><div class="dtop"><div class="dico b">✗</div><div class="dtit">인터랙션 설명 없는 시안</div></div><div class="ddesc">hover, 비활성화 상태가 없으면 개발자가 전부 추측해야 해요.</div><span class="dtag b">커뮤니케이션 비용 ↑</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 협업 팁 -->
+<section class="sec" id="collab">
+  <div class="ey">collaboration tips</div>
+  <h2 class="stitle">타 직군과 일할 때 꿀팁</h2>
+  <p class="sdesc">이렇게 해주시면 정말 일하기 좋아요.</p>
+  <div class="illust-wide" style="margin-bottom:1.5rem">
+    <svg width="100%" viewBox="0 0 700 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- 중앙 FE -->
+      <circle cx="350" cy="55" r="32" fill="#16161A" stroke="#5B9EF7" stroke-width="2"/>
+      <text x="350" y="50" font-size="9" fill="#5B9EF7" text-anchor="middle" font-family="monospace" font-weight="bold">프론트엔드</text>
+      <text x="350" y="63" font-size="9" fill="#5B9EF7" text-anchor="middle" font-family="monospace">개발자</text>
+      <!-- 기획자 -->
+      <circle cx="120" cy="55" r="26" fill="#16161A" stroke="#F0A050" stroke-width="1.5"/>
+      <text x="120" y="51" font-size="9" fill="#F0A050" text-anchor="middle" font-family="monospace">기획자</text>
+      <text x="120" y="63" font-size="8" fill="#888896" text-anchor="middle" font-family="monospace">명세 공유</text>
+      <path d="M148 55 L316 55" stroke="#F0A050" stroke-width="1" stroke-dasharray="4 2" opacity=".6"/>
+      <!-- 디자이너 -->
+      <circle cx="230" cy="15" r="22" fill="#16161A" stroke="#A07EF0" stroke-width="1.5"/>
+      <text x="230" y="11" font-size="9" fill="#A07EF0" text-anchor="middle" font-family="monospace">디자이너</text>
+      <text x="230" y="22" font-size="8" fill="#888896" text-anchor="middle" font-family="monospace">Figma</text>
+      <path d="M248 26 L328 44" stroke="#A07EF0" stroke-width="1" stroke-dasharray="4 2" opacity=".6"/>
+      <!-- 퍼블리셔 -->
+      <circle cx="230" cy="95" r="22" fill="#16161A" stroke="#4EC9A0" stroke-width="1.5"/>
+      <text x="230" y="91" font-size="9" fill="#4EC9A0" text-anchor="middle" font-family="monospace">퍼블리셔</text>
+      <text x="230" y="102" font-size="8" fill="#888896" text-anchor="middle" font-family="monospace">마크업</text>
+      <path d="M248 85 L328 66" stroke="#4EC9A0" stroke-width="1" stroke-dasharray="4 2" opacity=".6"/>
+      <!-- 백엔드 -->
+      <circle cx="580" cy="55" r="26" fill="#16161A" stroke="#F07070" stroke-width="1.5"/>
+      <text x="580" y="51" font-size="9" fill="#F07070" text-anchor="middle" font-family="monospace">백엔드</text>
+      <text x="580" y="63" font-size="8" fill="#888896" text-anchor="middle" font-family="monospace">API 연동</text>
+      <path d="M554 55 L384 55" stroke="#F07070" stroke-width="1" stroke-dasharray="4 2" opacity=".6"/>
+      <!-- 디자이너2 -->
+      <circle cx="470" cy="15" r="22" fill="#16161A" stroke="#A07EF0" stroke-width="1.5"/>
+      <text x="470" y="11" font-size="9" fill="#A07EF0" text-anchor="middle" font-family="monospace">디자이너</text>
+      <text x="470" y="22" font-size="8" fill="#888896" text-anchor="middle" font-family="monospace">QA 검토</text>
+      <path d="M452 26 L372 44" stroke="#A07EF0" stroke-width="1" stroke-dasharray="4 2" opacity=".6"/>
+      <!-- 기획2 -->
+      <circle cx="470" cy="95" r="22" fill="#16161A" stroke="#F0A050" stroke-width="1.5"/>
+      <text x="470" y="91" font-size="9" fill="#F0A050" text-anchor="middle" font-family="monospace">기획자</text>
+      <text x="470" y="102" font-size="8" fill="#888896" text-anchor="middle" font-family="monospace">피드백</text>
+      <path d="M452 85 L372 66" stroke="#F0A050" stroke-width="1" stroke-dasharray="4 2" opacity=".6"/>
+    </svg>
+  </div>
+  <div class="cgrid">
+    <div class="cc2"><div class="cch"><span class="crole rpm">기획자</span></div><ul class="ctips"><li><span class="tm">✓</span>버튼 클릭 후 동작을 명세서에 써줘요</li><li><span class="tm">✓</span>예외 케이스(빈 값, 에러)도 정의해줘요</li><li><span class="tm">✓</span>기능 변경은 문서나 티켓으로 남겨줘요</li><li><span class="tm">✓</span>"될 것 같아요?" 보다 "언제까지 가능해요?"</li></ul></div>
+    <div class="cc2"><div class="cch"><span class="crole rds">디자이너</span></div><ul class="ctips"><li><span class="tm">✓</span>색상·폰트를 Figma 변수로 정의해줘요</li><li><span class="tm">✓</span>hover·focus·disabled 상태도 넣어줘요</li><li><span class="tm">✓</span>컴포넌트 단위로 프레임을 나눠줘요</li><li><span class="tm">✓</span>"느낌이 달라요"보다 "이 값이 달라요"</li></ul></div>
+    <div class="cc2"><div class="cch"><span class="crole rpb">퍼블리셔</span></div><ul class="ctips"><li><span class="tm">✓</span>클래스 이름을 기능 기반으로 지어줘요</li><li><span class="tm">✓</span>인라인 스타일보다 클래스로 처리해줘요</li><li><span class="tm">✓</span>JS 붙을 곳에 id나 data 속성 달아줘요</li><li><span class="tm">✓</span>반복 구조를 미리 얘기해줘요</li></ul></div>
+    <div class="cc2"><div class="cch"><span class="crole rbe">백엔드</span></div><ul class="ctips"><li><span class="tm">✓</span>API 명세서(Swagger)를 미리 공유해줘요</li><li><span class="tm">✓</span>에러 응답에 이유를 담아줘요 (message)</li><li><span class="tm">✓</span>API 변경사항은 사전에 알려줘요</li><li><span class="tm">✓</span>개발 서버와 목업 데이터를 같이 올려줘요</li></ul></div>
+  </div>
+  <div class="note">💡<span>프론트도 마찬가지예요. 이상한 거 있으면 슬랙 DM 주세요!</span></div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="ey">frequently asked</div>
+  <h2 class="stitle">"왜 그게 안 돼요?" — 자주 받는 질문</h2>
+  <p class="sdesc">다른 직군에서 프론트엔드한테 자주 물어보는 것들이에요.</p>
+  <div class="illust-wide" style="margin-bottom:1.5rem">
+    <svg width="100%" viewBox="0 0 700 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- 말풍선들 -->
+      <rect x="10" y="10" width="160" height="44" rx="8" fill="#1E1E24" stroke="#F0A050" stroke-width="1"/>
+      <polygon points="36,54 44,54 40,62" fill="#1E1E24" stroke="#F0A050" stroke-width="1" stroke-linejoin="round"/>
+      <text x="90" y="29" font-size="9" fill="#F0A050" text-anchor="middle" font-family="monospace">디자인대로 했는데</text>
+      <text x="90" y="42" font-size="9" fill="#F0A050" text-anchor="middle" font-family="monospace">왜 달라 보여요? 🤔</text>
+
+      <rect x="192" y="10" width="150" height="44" rx="8" fill="#1E1E24" stroke="#A07EF0" stroke-width="1"/>
+      <polygon points="218,54 226,54 222,62" fill="#1E1E24" stroke="#A07EF0" stroke-width="1" stroke-linejoin="round"/>
+      <text x="267" y="29" font-size="9" fill="#A07EF0" text-anchor="middle" font-family="monospace">왜 이렇게</text>
+      <text x="267" y="42" font-size="9" fill="#A07EF0" text-anchor="middle" font-family="monospace">오래 걸려요? ⏰</text>
+
+      <rect x="364" y="10" width="156" height="44" rx="8" fill="#1E1E24" stroke="#4EC9A0" stroke-width="1"/>
+      <polygon points="390,54 398,54 394,62" fill="#1E1E24" stroke="#4EC9A0" stroke-width="1" stroke-linejoin="round"/>
+      <text x="442" y="29" font-size="9" fill="#4EC9A0" text-anchor="middle" font-family="monospace">새로고침하면</text>
+      <text x="442" y="42" font-size="9" fill="#4EC9A0" text-anchor="middle" font-family="monospace">왜 된대요? 🔄</text>
+
+      <rect x="542" y="10" width="148" height="44" rx="8" fill="#1E1E24" stroke="#5B9EF7" stroke-width="1"/>
+      <polygon points="568,54 576,54 572,62" fill="#1E1E24" stroke="#5B9EF7" stroke-width="1" stroke-linejoin="round"/>
+      <text x="616" y="29" font-size="9" fill="#5B9EF7" text-anchor="middle" font-family="monospace">DB도</text>
+      <text x="616" y="42" font-size="9" fill="#5B9EF7" text-anchor="middle" font-family="monospace">건드려요? 💾</text>
+    </svg>
+  </div>
+  <div class="faq-list">
+    <div class="fi"><div class="fq" onclick="tf(this)"><span class="fqm">Q.</span><span class="fqt">디자인대로 만들었는데 왜 다르게 보여요?</span><span class="fch">▼</span></div><div class="fa">브라우저마다 기본 스타일이 달라요. Figma는 픽셀 단위로 정확하지만 웹은 화면 크기가 제각각이라 폰트, 줄바꿈 위치가 달라져요. 이걸 맞추는 게 프론트 작업의 상당 부분이에요.</div></div>
+    <div class="fi"><div class="fq" onclick="tf(this)"><span class="fqm">Q.</span><span class="fqt">이거 구현하는 데 왜 이렇게 오래 걸려요?</span><span class="fch">▼</span></div><div class="fa">화면이 단순해 보여도 안에서 처리하는 게 많아요. "검색 필터" 하나만 해도 — 입력값, API 요청, 로딩, 에러, 빈 결과, URL 동기화, 모바일 레이아웃까지. 눈에 보이는 건 10%예요.</div></div>
+    <div class="fi"><div class="fq" onclick="tf(this)"><span class="fqm">Q.</span><span class="fqt">프론트엔드가 데이터베이스도 건드려요?</span><span class="fch">▼</span></div><div class="fa">일반적으로는 아니에요. DB는 백엔드 영역이고 프론트는 API를 통해서만 데이터를 받아요. Next.js 같은 풀스택 프레임워크를 쓰면 경계가 흐려지기도 해요.</div></div>
+    <div class="fi"><div class="fq" onclick="tf(this)"><span class="fqm">Q.</span><span class="fqt">"새로고침하면 된다"는 말을 왜 자주 해요?</span><span class="fch">▼</span></div><div class="fa">브라우저가 이전에 받아둔 캐시를 그대로 써서 새 코드가 반영 안 되는 경우예요. 새로고침하면 최신 파일을 다시 받아와서 해결돼요.</div></div>
+    <div class="fi"><div class="fq" onclick="tf(this)"><span class="fqm">Q.</span><span class="fqt">앱이랑 웹이랑 뭐가 달라요?</span><span class="fch">▼</span></div><div class="fa">웹은 브라우저에서, 앱은 설치해서 사용해요. 프론트엔드는 주로 웹을 만들어요. React Native, Flutter로 앱을 만들기도 하고, 하나의 코드로 둘 다 만드는 시도도 많아요.</div></div>
+  </div>
+</section>
+
+<!-- 용어 사전 -->
+<section class="sec" id="glossary">
+  <div class="ey">glossary</div>
+  <h2 class="stitle">용어 사전</h2>
+  <p class="sdesc">회의할 때 갑자기 튀어나오는 단어들. 클릭하면 펼쳐져요.</p>
+
+  <div class="illust-wide" style="margin-bottom:1.5rem">
+    <svg width="100%" viewBox="0 0 700 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- API 흐름 -->
+      <rect x="10" y="20" width="100" height="50" rx="8" fill="#16161A" stroke="#5B9EF7" stroke-width="1.2"/>
+      <text x="60" y="38" font-size="9" fill="#5B9EF7" text-anchor="middle" font-family="monospace">브라우저</text>
+      <text x="60" y="52" font-size="9" fill="#5B9EF7" text-anchor="middle" font-family="monospace">(프론트)</text>
+      <text x="60" y="64" font-size="8" fill="#888896" text-anchor="middle" font-family="monospace">React App</text>
+      <!-- 요청 화살표 -->
+      <path d="M112 35 L210 35" stroke="#4EC9A0" stroke-width="1.2" marker-end="url(#arr)"/>
+      <text x="161" y="28" font-size="8" fill="#4EC9A0" text-anchor="middle" font-family="monospace">GET /api/posts</text>
+      <text x="161" y="48" font-size="8" fill="#888896" text-anchor="middle" font-family="monospace">요청(Request)</text>
+      <!-- 응답 화살표 -->
+      <path d="M210 58 L112 58" stroke="#F0A050" stroke-width="1.2" marker-end="url(#arr2)"/>
+      <text x="161" y="72" font-size="8" fill="#F0A050" text-anchor="middle" font-family="monospace">응답(Response)</text>
+      <!-- 서버 -->
+      <rect x="212" y="20" width="100" height="50" rx="8" fill="#16161A" stroke="#F07070" stroke-width="1.2"/>
+      <text x="262" y="38" font-size="9" fill="#F07070" text-anchor="middle" font-family="monospace">서버</text>
+      <text x="262" y="52" font-size="9" fill="#F07070" text-anchor="middle" font-family="monospace">(백엔드)</text>
+      <text x="262" y="64" font-size="8" fill="#888896" text-anchor="middle" font-family="monospace">Node / Spring</text>
+      <!-- JSON -->
+      <path d="M314 45 L360 45" stroke="#888896" stroke-width="1" stroke-dasharray="3 2"/>
+      <rect x="362" y="20" width="160" height="50" rx="8" fill="#16161A" stroke="#4EC9A0" stroke-width="1.2"/>
+      <text x="442" y="36" font-size="9" fill="#4EC9A0" text-anchor="middle" font-family="monospace">JSON 응답</text>
+      <text x="380" y="50" font-size="8" fill="#4EC9A0" font-family="monospace">[{id:1, title:</text>
+      <text x="380" y="62" font-size="8" fill="#4EC9A0" font-family="monospace">"안녕"}, ...]</text>
+      <!-- 상태코드 -->
+      <rect x="544" y="20" width="148" height="50" rx="8" fill="#16161A" stroke="#888896" stroke-width="1.2"/>
+      <text x="618" y="36" font-size="9" fill="#E8E8F0" text-anchor="middle" font-family="monospace">상태코드</text>
+      <text x="556" y="50" font-size="8.5" fill="#4EC9A0" font-family="monospace">200 ✓</text>
+      <text x="556" y="62" font-size="8.5" fill="#F07070" font-family="monospace">404 ✗  500 ✗</text>
+      <defs>
+        <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#4EC9A0"/></marker>
+        <marker id="arr2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#F0A050"/></marker>
+      </defs>
+    </svg>
+  </div>
+
+  <div class="gcat">🔌 API / 통신</div>
+  <div class="glist">
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">API</span><span class="ts2">백엔드와 대화하는 창구</span><span class="tch">▼</span></div><div class="tb">프론트가 "이 유저 정보 줘"라고 요청하면 백엔드가 데이터를 돌려주는 약속된 통로예요.<div class="tcode">GET /api/users/123  →  { name: "김철수", age: 28 }</div></div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">REST API</span><span class="ts2">가장 흔한 API 방식</span><span class="tch">▼</span></div><div class="tb">URL로 대상을 표현하고, GET·POST·DELETE 동사로 행동을 표현해요.<div class="tcode">GET /posts      → 목록
+POST /posts     → 생성
+DELETE /posts/5 → 삭제</div></div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">JSON</span><span class="ts2">데이터 교환 포맷</span><span class="tch">▼</span></div><div class="tb">프론트와 백엔드가 데이터를 주고받을 때 쓰는 포맷이에요.<div class="tcode">{ "name": "이영희", "role": "designer" }</div></div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">HTTP 상태코드</span><span class="ts2">요청 결과를 숫자로 표현</span><span class="tch">▼</span></div><div class="tb">서버가 응답할 때 결과를 숫자로 알려줘요.<div class="tcode">200 OK           → 성공
+404 Not Found    → 없는 주소
+401 Unauthorized → 로그인 필요
+500 Server Error → 서버 문제</div></div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">CORS</span><span class="ts2">도메인 간 요청 제한 정책</span><span class="tch">▼</span></div><div class="tb">다른 도메인에서 API를 마음대로 못 부르게 막는 브라우저 정책이에요. 백엔드에서 허용 설정을 해줘야 해결돼요.</div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">async/await</span><span class="ts2">기다리는 코드 작성법</span><span class="tch">▼</span></div><div class="tb">API 호출처럼 시간이 걸리는 작업 앞에 붙여요. 결과가 올 때까지 기다렸다가 다음 줄을 실행해요.<div class="tcode">const data = await fetch('/api/users')
+const json  = await data.json()</div></div></div>
+  </div>
+
+  <div class="gcat">💻 코드 / 개념</div>
+  <div class="glist">
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">컴포넌트</span><span class="ts2">재사용 가능한 UI 조각</span><span class="tch">▼</span></div><div class="tb">버튼, 카드 같은 UI 요소를 레고 조각처럼 만들어 이곳저곳에 갖다 쓸 수 있어요.</div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">상태 (State)</span><span class="ts2">화면이 기억하는 데이터</span><span class="tch">▼</span></div><div class="tb">"로그인 됐나요?" 같은 현재 상황을 기억하는 것. 상태가 바뀌면 화면이 자동으로 다시 그려져요.<div class="tcode">const [isLoggedIn, setIsLoggedIn] = useState(false)</div></div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">렌더링</span><span class="ts2">화면을 그리는 것</span><span class="tch">▼</span></div><div class="tb">HTML·CSS·JS를 브라우저가 해석해서 눈에 보이는 화면으로 그려내는 과정이에요.</div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">CSR / SSR</span><span class="ts2">화면을 어디서 그리냐</span><span class="tch">▼</span></div><div class="tb">CSR은 브라우저에서, SSR은 서버에서 HTML을 완성해서 내려줘요. SSR이 SEO와 초기 속도에 유리해요.<div class="tcode">CSR: 빈 HTML → JS 실행 → 화면 완성
+SSR: 서버에서 완성 HTML → 즉시 표시</div></div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">빌드 (Build)</span><span class="ts2">배포 전 최적화 과정</span><span class="tch">▼</span></div><div class="tb">개발용 코드를 브라우저가 빠르게 읽도록 압축·변환하는 작업. 배포 전에 꼭 해요.<div class="tcode">npm run build → /dist 에 최적화 파일 생성</div></div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">캐싱 (Cache)</span><span class="ts2">데이터 임시 저장</span><span class="tch">▼</span></div><div class="tb">한 번 받아온 파일을 저장해뒀다가 재사용하는 것. "캐시 지워봐"라는 말이 나오는 이유예요.</div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">라우팅</span><span class="ts2">URL에 따라 화면 이동</span><span class="tch">▼</span></div><div class="tb">주소창의 URL이 바뀔 때 어떤 화면을 보여줄지 결정하는 것. 페이지를 새로 불러오지 않고도 화면이 바뀌는 게 SPA 라우팅이에요.<div class="tcode">/         → 홈 화면
+/login    → 로그인 화면
+/post/42  → 42번 글 상세</div></div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">반응형</span><span class="ts2">화면 크기에 따라 자동으로 달라지는 레이아웃</span><span class="tch">▼</span></div><div class="tb">PC에서 볼 때와 모바일에서 볼 때 화면 구성이 달라지는 것. CSS 미디어쿼리로 "화면이 768px 이하면 이렇게 보여줘"라고 지정해요.<div class="tcode">@media (max-width: 768px) {
+  /* 모바일에서만 적용 */
+  .sidebar { display: none; }
+}</div></div></div>
+  </div>
+
+  <div class="gcat">🌐 크로스 브라우징 / 환경</div>
+  <div class="glist">
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">크로스 브라우징</span><span class="ts2">어느 브라우저에서나 같게 보이게</span><span class="tch">▼</span></div><div class="tb">크롬, 사파리, 파이어폭스, 엣지 등 브라우저마다 HTML·CSS를 해석하는 방식이 조금씩 달라요. "크롬에선 되는데 사파리에서 깨져요"가 바로 이 문제예요. 각 브라우저에서 테스트하고 맞춰주는 작업을 크로스 브라우징이라고 해요.</div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">브라우저</span><span class="ts2">웹을 보는 프로그램</span><span class="tch">▼</span></div><div class="tb">크롬, 사파리, 파이어폭스, 엣지처럼 웹사이트를 열어볼 수 있는 프로그램이에요. 프론트엔드 코드는 이 안에서 실행돼요. 브라우저마다 조금씩 다르게 동작하는 게 프론트 개발의 어려움 중 하나예요.</div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">개발자 도구 (F12)</span><span class="ts2">브라우저 안의 개발자 전용 패널</span><span class="tch">▼</span></div><div class="tb">F12를 누르면 열리는 패널이에요. 에러 메시지 확인, 네트워크 요청 확인, 특정 요소의 CSS 수정 등을 할 수 있어요. 프론트 개발자의 가장 친한 친구예요.<div class="tcode">F12 → Console : 에러·로그 확인
+F12 → Network : API 요청 확인
+F12 → Elements: HTML/CSS 실시간 수정</div></div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">콘솔 (Console)</span><span class="ts2">코드 실행 결과를 찍어보는 곳</span><span class="tch">▼</span></div><div class="tb">F12 → Console 탭에서 볼 수 있어요. 코드가 원하는 값을 갖고 있는지 확인하거나, 에러 메시지를 읽을 때 써요. 빨간 글씨가 뜨면 에러가 난 거예요.<div class="tcode">console.log('값 확인:', user)
+// → F12 콘솔에서 실시간으로 볼 수 있어요</div></div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">localhost</span><span class="ts2">내 컴퓨터에서만 열리는 개발용 주소</span><span class="tch">▼</span></div><div class="tb">개발할 때 실제 서버에 올리기 전에 내 컴퓨터에서 먼저 테스트해요. 이때 주소창에 뜨는 게 localhost예요. 다른 사람 컴퓨터에서는 열 수 없어요.<div class="tcode">http://localhost:3000  ← 내 컴퓨터에서만 접속 가능
+https://myapp.com     ← 배포 후 누구나 접속 가능</div></div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">배포 (Deploy)</span><span class="ts2">만든 걸 실제 인터넷에 올리는 것</span><span class="tch">▼</span></div><div class="tb">개발이 끝난 코드를 실제 사용자가 접속할 수 있는 서버에 올리는 과정이에요. "배포 나갔어요"는 실제 서비스에 반영됐다는 뜻이에요.</div></div>
+  </div>
+
+  <div class="gcat">🛠 개발 도구 / 협업</div>
+  <div class="glist">
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">Git</span><span class="ts2">코드 변경 이력을 관리하는 도구</span><span class="tch">▼</span></div><div class="tb">코드를 언제, 누가, 무엇을 바꿨는지 기록해두는 도구예요. 실수로 코드를 망가뜨려도 이전 상태로 되돌릴 수 있어요. 팀원들과 코드를 합치는 것도 Git으로 해요.<div class="tcode">git commit  → 변경사항 저장 (세이브 포인트)
+git push    → 원격 저장소에 올리기
+git pull    → 팀원 코드 받아오기</div></div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">PR (Pull Request)</span><span class="ts2">코드 리뷰 요청</span><span class="tch">▼</span></div><div class="tb">"내가 만든 기능 코드를 메인 코드에 합쳐도 될까요? 먼저 검토해줘요"라는 요청이에요. 팀원들이 코드를 보고 피드백을 남기면, 문제없으면 합쳐요(merge).</div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">npm / yarn</span><span class="ts2">패키지 설치 도구</span><span class="tch">▼</span></div><div class="tb">다른 개발자가 만들어놓은 코드 묶음(패키지, 라이브러리)을 프로젝트에 설치하는 도구예요. 앱스토어처럼 필요한 걸 골라서 설치해요.<div class="tcode">npm install react   → React 설치
+npm run dev         → 개발 서버 실행
+npm run build       → 배포용 파일 만들기</div></div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">라이브러리 / 프레임워크</span><span class="ts2">남이 만들어둔 코드 도구 모음</span><span class="tch">▼</span></div><div class="tb">처음부터 다 만들 필요 없이 남이 잘 만들어둔 걸 가져다 쓰는 것. 라이브러리는 필요한 것만 골라 쓰는 도구 모음이고, 프레임워크는 개발 방식 자체를 정해주는 큰 틀이에요. React는 라이브러리, Next.js는 프레임워크예요.</div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">환경변수</span><span class="ts2">코드 밖에서 관리하는 민감한 설정값</span><span class="tch">▼</span></div><div class="tb">API 키, 서버 주소처럼 코드에 직접 쓰면 안 되는 값들을 별도 파일(.env)에 저장해두는 방식이에요. GitHub에 올릴 때도 이 파일은 빼고 올려요.<div class="tcode"># .env 파일 (비공개)
+VITE_API_URL=https://api.myapp.com
+VITE_SECRET_KEY=비밀키1234</div></div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">번들러 (Vite, Webpack)</span><span class="ts2">파일들을 합치고 최적화하는 도구</span><span class="tch">▼</span></div><div class="tb">개발할 때 파일을 수백 개로 나눠 작성하지만, 브라우저에 보낼 땐 합쳐서 압축해야 빨라요. 이 작업을 자동으로 해주는 게 번들러예요. 요즘은 빠른 Vite를 많이 써요.</div></div>
+  </div>
+
+  <div class="gcat">💬 회의·협업에서 자주 나오는 말</div>
+  <div class="glist">
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">QA</span><span class="ts2">배포 전 품질 검사</span><span class="tch">▼</span></div><div class="tb">Quality Assurance의 줄임말. 개발이 끝난 기능을 배포하기 전에 버그는 없는지, 기획대로 잘 작동하는지 테스트하는 과정이에요. "QA 중이에요"는 아직 테스트 단계라는 뜻이에요.</div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">스프린트</span><span class="ts2">정해진 기간 단위로 일하는 방식</span><span class="tch">▼</span></div><div class="tb">보통 1~2주 단위로 목표를 정하고 그 안에 개발을 완료하는 애자일 방식의 개발 주기예요. "이번 스프린트에 넣자"는 이번 1~2주 안에 개발하자는 뜻이에요.</div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">핫픽스</span><span class="ts2">긴급 버그 수정 배포</span><span class="tch">▼</span></div><div class="tb">서비스에 심각한 버그가 생겼을 때 정기 배포를 기다리지 않고 급하게 수정해서 올리는 것. "핫픽스 나갑니다"는 긴급 상황이에요.</div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">레거시 (Legacy)</span><span class="ts2">오래되고 낡은 코드</span><span class="tch">▼</span></div><div class="tb">오래 전에 짠 코드라 지금 기준으로는 비효율적이지만 건드리기 무서운 코드예요. "레거시가 많아서요..."는 기술 부채가 쌓여있다는 뜻이에요.</div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">기술 부채</span><span class="ts2">나중에 갚아야 할 코드의 빚</span><span class="tch">▼</span></div><div class="tb">빠르게 개발하느라 제대로 짜지 않은 코드들이 쌓이는 것. 당장은 빠르지만 나중에 고치거나 기능을 추가할 때 더 오래 걸리게 돼요.</div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">리팩토링</span><span class="ts2">기능은 그대로, 코드만 다시 정리</span><span class="tch">▼</span></div><div class="tb">화면에 보이는 결과는 똑같지만 코드 내부를 더 깔끔하고 효율적으로 다시 짜는 것. "리팩토링 좀 해야 해요"는 기능 말고 코드 정리가 필요하다는 뜻이에요.</div></div>
+    <div class="ti"><div class="th" onclick="tt(this)"><span class="tk">스택 오버플로 / 구글링</span><span class="ts2">개발자의 필수 검색 활동</span><span class="tch">▼</span></div><div class="tb">Stack Overflow는 개발자들이 질문하고 답하는 글로벌 커뮤니티예요. 에러가 나거나 모르는 게 있으면 구글에 검색해서 Stack Overflow 글을 보는 게 기본이에요. 모든 개발자가 해요.</div></div>
+  </div>
+</section>
+
+<!-- Q&A -->
+<section class="sec" id="qa">
+  <div class="ey">Q &amp; A</div>
+  <h2 class="stitle">질문 받겠습니다</h2>
+  <p class="sdesc">궁금한 거 다 물어봐요. 모르면 모른다고 할게요.</p>
+  <div class="qa-center">
+    <div class="qa-av">
+      <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#5B9EF7" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+    </div>
+    <div class="qa-name">Frontend Developer</div>
+    <div class="qa-status"><span class="qa-sdot"></span> 질문 대기 중</div>
+  </div>
+</section>
+
+<footer>// Frontend Developer Intro · 사내 스터디 발표자료 · 발표자: 프론트엔드 개발자</footer>
+
+<script>
+function tt(h){var b=h.nextElementSibling,c=h.querySelector('.tch'),o=b.classList.toggle('vis');c.style.transform=o?'rotate(180deg)':''}
+function tf(h){var b=h.nextElementSibling,c=h.querySelector('.fch'),o=b.classList.toggle('vis');c.style.transform=o?'rotate(180deg)':''}
+function runDemo(){
+  var n=document.getElementById('d-name').value.trim();
+  var r=document.getElementById('d-role').value;
+  var e=document.getElementById('d-email').value.trim();
+  var out=document.getElementById('demo-json');
+  if(!n&&!r&&!e){out.textContent='\u26a0 값을 하나 이상 입력해주세요';out.style.color='var(--co)';return;}
+  out.style.color='';
+  var obj={};
+  if(n)obj.name=n;
+  if(r)obj.role=r;
+  if(e)obj.email=e;
+  obj.createdAt=new Date().toISOString();
+  obj.status='pending';
+  var raw=JSON.stringify(obj,null,2);
+  var colored=raw
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"([^"]+)":/g,'<span style="color:var(--co)">"$1"</span>:')
+    .replace(/: "([^"]*)"/g,': <span style="color:var(--gn)">"$1"</span>')
+    .replace(/: (true|false|null)/g,': <span style="color:var(--pu)">$1</span>');
+  var ts=new Date().toLocaleTimeString();
+  out.innerHTML='<span style="color:var(--t3)">// POST /api/users \u00b7 '+ts+'</span>\n'+colored;
+}
+</script>
+</body>
+</html>

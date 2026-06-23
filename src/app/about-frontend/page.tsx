@@ -44,7 +44,7 @@ const PAGE_CSS = `
 .illust-side{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
 .ey{font-family:var(--mono);font-size:13px;color:var(--t3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.6rem}
 .stitle{font-size:24px;font-weight:700;margin-bottom:.5rem;letter-spacing:-.01em}
-.sdesc{font-size:16px;color:var(--t2);margin-bottom:2rem;line-height:1.75;max-width:600px}
+.sdesc{font-size:16px;color:var(--t2);margin-bottom:2rem;line-height:1.75;}
 .role-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
 .role-card{background:var(--bg2);border:1px solid var(--b);border-radius:var(--r);padding:1.25rem;transition:border-color .2s}
 .role-card:hover{border-color:var(--b2)}
@@ -621,12 +621,12 @@ const GLOSSARY_SVG = `<svg width="100%" viewBox="0 0 700 90" fill="none" xmlns="
 </svg>`
 
 const ROLE_ITEMS = [
-  { title: '화면 구현', desc: '디자인 시안을 실제 동작하는 웹 화면으로 만듭니다' },
-  { title: 'API 연동', desc: '백엔드 서버에서 받은 데이터를 화면에 뿌려줍니다' },
-  { title: '인터랙션', desc: '클릭, 입력, 애니메이션 등 사용자 경험을 코드로 구현합니다' },
-  { title: '반응형', desc: 'PC·태블릿·모바일 어디서 봐도 잘 보이도록 대응합니다' },
-  { title: '성능·접근성', desc: '빠르게 로딩되고, 누구나 쓸 수 있도록 최적화합니다' },
-  { title: '디버깅', desc: '버그를 찾아내고, 왜 안 되는지 파악해서 고칩니다' },
+  { title: '화면 구현', desc: '디자인 시안을 실제 동작하는 웹 화면으로 만듭니다.' },
+  { title: 'API 연동', desc: '백엔드 서버에서 받은 데이터를 화면에 뿌려줍니다.' },
+  { title: '인터랙션', desc: '클릭, 입력, 애니메이션 등 사용자 경험을 코드로 구현합니다.' },
+  { title: '반응형', desc: 'PC·태블릿·모바일 어디서 봐도 잘 보이도록 대응합니다.' },
+  { title: '성능·접근성', desc: '빠르게 로딩되고, 누구나 쓸 수 있도록 최적화합니다.' },
+  { title: '디버깅', desc: '버그를 찾아내고, 왜 안 되는지 파악해서 고칩니다.' },
 ]
 
 const DIFF_ITEMS = [
@@ -679,10 +679,10 @@ const DESIGN_BAD = [
 ]
 
 const COLLAB = [
-  { role: '기획자', cls: 'rpm', tips: ['버튼 클릭 후 동작을 명세서에 써줘요', '예외 케이스(빈 값, 에러)도 정의해줘요', '기능 변경은 문서나 티켓으로 남겨줘요', '"될 것 같아요?" 보다 "언제까지 가능해요?"'] },
-  { role: '디자이너', cls: 'rds', tips: ['색상·폰트를 Figma 변수로 정의해줘요', 'hover·focus·disabled 상태도 넣어줘요', '컴포넌트 단위로 프레임을 나눠줘요', '"느낌이 달라요"보다 "이 값이 달라요"'] },
-  { role: '퍼블리셔', cls: 'rpb', tips: ['클래스 이름을 기능 기반으로 지어줘요', '인라인 스타일보다 클래스로 처리해줘요', 'JS 붙을 곳에 id나 data 속성 달아줘요', '반복 구조를 미리 얘기해줘요'] },
-  { role: '백엔드', cls: 'rbe', tips: ['API 명세서(Swagger)를 미리 공유해줘요', '에러 응답에 이유를 담아줘요 (message)', 'API 변경사항은 사전에 알려줘요', '개발 서버와 목업 데이터를 같이 올려줘요'] },
+  { role: '기획자', cls: 'rpm', tips: ['버튼 클릭 후 동작을 명세서에 써줘요.', '예외 케이스(빈 값, 에러)도 정의해줘요.', '기능 변경은 문서나 티켓으로 남겨줘요.', '"될 것 같아요?" 보다 "언제까지 가능해요?"'] },
+  { role: '디자이너', cls: 'rds', tips: ['색상·폰트를 Figma 변수로 정의해줘요.', 'hover·focus·disabled 상태도 넣어줘요.', '컴포넌트 단위로 프레임을 나눠줘요.', '"느낌이 달라요."보다 "이 값이 달라요."'] },
+  { role: '퍼블리셔', cls: 'rpb', tips: ['클래스 이름을 기능 기반으로 지어줘요.', '인라인 스타일보다 클래스로 처리해줘요.', 'JS 붙을 곳에 id나 data 속성 달아줘요.', '반복 구조를 미리 얘기해줘요.'] },
+  { role: '백엔드', cls: 'rbe', tips: ['API 명세서(Swagger)를 미리 공유해줘요.', '에러 응답에 이유를 담아줘요 (message)', 'API 변경사항은 사전에 알려줘요.', '개발 서버와 목업 데이터를 같이 올려줘요.'] },
 ]
 
 const FAQ_DATA = [
@@ -730,7 +730,7 @@ const GLOSS_SECTIONS: { emoji: string; label: string; items: GlossItem[] }[] = [
   {
     emoji: '🌐', label: '크로스 브라우징 / 환경',
     items: [
-      { key: '크로스 브라우징', title: '어느 브라우저에서나 같게 보이게', body: `크롬, 사파리, 파이어폭스, 엣지 등 브라우저마다 HTML·CSS를 해석하는 방식이 조금씩 달라요. "크롬에선 되는데 사파리에서 깨져요"가 바로 이 문제예요.` },
+      { key: '크로스 브라우징', title: '어느 브라우저에서나 같게 보이게', body: `크롬, 사파리, 파이어폭스, 엣지 등 브라우저마다 HTML·CSS를 해석하는 방식이 조금씩 달라요. "크롬에선 되는데 사파리에서 깨져요."가 바로 이 문제예요.` },
       { key: '개발자 도구 (F12)', title: '브라우저 안의 개발자 전용 패널', body: `F12를 누르면 열리는 패널이에요. 에러 확인, 네트워크 요청 확인, CSS 수정 등을 할 수 있어요.<div class="tcode">F12 → Console : 에러·로그 확인\nF12 → Network : API 요청 확인\nF12 → Elements: HTML/CSS 실시간 수정</div>` },
       { key: 'localhost', title: '내 컴퓨터에서만 열리는 개발용 주소', body: `개발할 때 실제 서버에 올리기 전에 내 컴퓨터에서 먼저 테스트해요.<div class="tcode">http://localhost:3000  ← 내 컴퓨터에서만 접속 가능\nhttps://myapp.com     ← 배포 후 누구나 접속 가능</div>` },
       { key: '배포 (Deploy)', title: '만든 걸 실제 인터넷에 올리는 것', body: `개발이 끝난 코드를 실제 사용자가 접속할 수 있는 서버에 올리는 과정이에요.` },
@@ -740,7 +740,7 @@ const GLOSS_SECTIONS: { emoji: string; label: string; items: GlossItem[] }[] = [
     emoji: '🛠', label: '개발 도구 / 협업',
     items: [
       { key: 'Git', title: '코드 변경 이력을 관리하는 도구', body: `코드를 언제, 누가, 무엇을 바꿨는지 기록해두는 도구예요.<div class="tcode">git commit  → 변경사항 저장\ngit push    → 원격 저장소에 올리기\ngit pull    → 팀원 코드 받아오기</div>` },
-      { key: 'PR (Pull Request)', title: '코드 리뷰 요청', body: `"내가 만든 기능 코드를 메인 코드에 합쳐도 될까요? 먼저 검토해줘요"라는 요청이에요.` },
+      { key: 'PR (Pull Request)', title: '코드 리뷰 요청', body: `"내가 만든 기능 코드를 메인 코드에 합쳐도 될까요? 먼저 검토해줘요."라는 요청이에요.` },
       { key: 'npm / yarn', title: '패키지 설치 도구', body: `다른 개발자가 만들어놓은 코드 묶음을 프로젝트에 설치하는 도구예요.<div class="tcode">npm install react   → React 설치\nnpm run dev         → 개발 서버 실행\nnpm run build       → 배포용 파일 만들기</div>` },
       { key: '환경변수', title: '코드 밖에서 관리하는 민감한 설정값', body: `API 키, 서버 주소처럼 코드에 직접 쓰면 안 되는 값들을 별도 파일(.env)에 저장해두는 방식이에요.<div class="tcode"># .env 파일 (비공개)\nVITE_API_URL=https://api.myapp.com</div>` },
       { key: 'CI/CD', title: '코드 push부터 배포까지 자동화하는 파이프라인', body: `코드를 push하면 자동으로 테스트 → 빌드 → 배포까지 이어지는 흐름이에요.<div class="tcode">git push → 자동 테스트 → 빌드 → 스테이징 배포 → 운영 배포</div>` },
