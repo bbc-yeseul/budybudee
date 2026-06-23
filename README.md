@@ -147,6 +147,16 @@ docker run --rm -v $(pwd):/app -w /app node:20-alpine npx vitest run
 npm test
 ```
 
+## 댓글 기능
+
+각 페이지 하단에서 댓글을 남기실 수 있습니다.
+
+- GitHub 계정이 필요합니다.
+- 최초 댓글 작성 시 giscus 앱의 접근 허용이 필요합니다.
+- 댓글은 GitHub Markdown 양식을 따르며, Markdown 특수기호는 표기가 안 될 수 있습니다.
+- 작성된 댓글은 이 레포의 Discussions 탭에서 전체 확인 가능합니다.
+- 레포는 전체 공개 상태로, 필요하신 경우 복제(clone) · 포크(fork) 등 자유롭게 가져다 사용하실 수 있습니다.
+
 ## 기술 스택
 
 - **Next.js 16** (App Router)
