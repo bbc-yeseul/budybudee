@@ -3,6 +3,7 @@
 import React from 'react'
 import { useState } from 'react'
 import Link from 'next/link'
+import { PostLayout } from '@/components/PostLayout'
 
 
 const PAGE_CSS = `
@@ -810,6 +811,7 @@ export default function AboutFrontendPage() {
   }
 
   return (
+    <PostLayout variant="bare" title="프론트엔드 개발자 소개">
     <>
     <div className="fe-intro">
       <style dangerouslySetInnerHTML={{ __html: PAGE_CSS }} />
@@ -1230,5 +1232,6 @@ export default function AboutFrontendPage() {
       </div>
     )}
     </>
+    </PostLayout>
   )
 }

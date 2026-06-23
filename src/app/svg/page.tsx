@@ -1,10 +1,10 @@
 'use client'
 
 import { Fragment, useState } from 'react'
-import Link from 'next/link'
 import { SvgIcon } from '@/components/SvgSprite'
 import { FontIcon } from '@/components/FontIcon'
 import { ALL_ICONS, SVG_ONLY_ICONS, PRESERVE_COLOR_ICONS, type IconName, type IconSize } from '@/lib/iconData'
+import { PostLayout } from '@/components/PostLayout'
 
 const COMPARISON_TABLE = [
   {
@@ -41,28 +41,11 @@ export default function SvgPage() {
   const demoIconPreservesColor = PRESERVE_COLOR_ICONS.includes(demoIcon)
 
   return (
-    <main className="min-h-screen bg-gray-50 p-8">
+    <PostLayout
+      title="SVG Sprite vs Icon Font"
+      description="두 아이콘 방식을 직접 비교해보세요"
+    >
       <div className="max-w-7xl mx-auto space-y-12">
-
-        {/* 헤더 */}
-        <header className="text-center space-y-3">
-          <h1 className="text-4xl font-bold text-gray-900">SVG Sprite vs Icon Font</h1>
-          <p className="text-lg text-gray-500">두 아이콘 방식을 직접 비교해보세요</p>
-          <div className="pt-2 flex items-center justify-center gap-3">
-            <Link
-              href="/vitest"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 text-white text-sm font-semibold rounded-xl hover:bg-emerald-700 transition-colors"
-            >
-              Vitest 보러가기 →
-            </Link>
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-600 text-white text-sm font-semibold rounded-xl hover:bg-gray-700 transition-colors"
-            >
-              ← 메인으로 이동하기
-            </Link>
-          </div>
-        </header>
 
         {/* 아이콘 그리드 비교 */}
         <section className="space-y-4">
@@ -442,6 +425,6 @@ export type IconName =
           폰트 빌드: gbe-1.0 Fantasticon 방식 차용
         </footer>
       </div>
-    </main>
+    </PostLayout>
   )
 }
