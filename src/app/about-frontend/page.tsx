@@ -1189,7 +1189,7 @@ export default function AboutFrontendPage() {
                 &ldquo;Next.js 쓰는데 React를 왜 따로 설치해요?&rdquo;
               </div>
               <div className="modal-text">
-                Next.js는 React를 안에 포함하지 않아요. <strong>&ldquo;React가 옆에 있어야 작동한다&rdquo;고 선언만</strong> 해요 — 이걸 peer dependency라고 해요. 그래서 <code style={{ fontFamily: 'var(--mono)', fontSize: '13px', color: 'var(--gn)' }}>npm install next</code>를 해도 React는 안 딸려오고 따로 설치해야 해요.
+                쉽게 말하면 <strong>크롬용 클로드를 설치해도 크롬은 안 딸려오는 것</strong>과 같아요. 클로드는 크롬이 있어야 실행되지만, 크롬을 직접 설치해야 하듯이 — Next.js도 React가 있어야 동작하지만, React를 따로 설치해야 해요. 이걸 peer dependency라고 해요.
               </div>
               <div className="modal-callout">
                 <code style={{ fontFamily: 'var(--mono)', fontSize: '13px', color: 'var(--t2)' }}>package.json</code>을 보면 이렇게 세 개가 따로 있어요:<br />
