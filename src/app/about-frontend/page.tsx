@@ -1155,7 +1155,7 @@ export default function AboutFrontendPage() {
           <div className="modal-head">
             <div className="modal-title">
               React vs Next.js
-              <span>// 발표 후 실제로 나온 질문 정리</span>
+              <span>// 발표 후 나온 질문 정리</span>
             </div>
             <button className="modal-close" onClick={() => setShowModal(false)} aria-label="닫기">✕</button>
           </div>
@@ -1172,9 +1172,9 @@ export default function AboutFrontendPage() {
               <div className="modal-callout">
                 하지만 이런 상황엔 별도 백엔드가 필요해져요:
                 <ul className="modal-list">
-                  <li><strong>클라이언트가 여러 개일 때</strong> — 웹·모바일 앱이 같은 API를 써야 하면 Next.js API를 공유하기 어려워요</li>
-                  <li><strong>팀이 커질 때</strong> — 백엔드 로직이 복잡해지면 Go·Java 별도 서버가 나아요</li>
-                  <li><strong>Next.js 자체 한계</strong> — Route Handler는 서버리스라서 실행 시간 제한이 있고, 오래 걸리는 작업(배치, 큐)은 못해요</li>
+                  <li><strong>클라이언트가 여러 개일 때</strong> — 웹·모바일 앱이 같은 API를 써야 하면 Next.js API를 공유하기 어려워요.</li>
+                  <li><strong>팀이 커질 때</strong> — 백엔드 로직이 복잡해지면 Go·Java 별도 서버가 나아요.</li>
+                  <li><strong>Next.js 자체 한계</strong> — Route Handler는 서버리스라서 실행 시간 제한이 있고, 오래 걸리는 작업(배치, 큐)은 못해요.</li>
                 </ul>
               </div>
               <div className="modal-text" style={{ marginTop: '.75rem' }}>
@@ -1194,9 +1194,9 @@ export default function AboutFrontendPage() {
               <div className="modal-callout">
                 <code style={{ fontFamily: 'var(--mono)', fontSize: '13px', color: 'var(--t2)' }}>package.json</code>을 보면 이렇게 세 개가 따로 있어요:<br />
                 <ul className="modal-list" style={{ marginTop: '.5rem' }}>
-                  <li><code style={{ fontFamily: 'var(--mono)', fontSize: '13px', color: 'var(--ac)' }}>&quot;next&quot;</code> — 프레임워크 (라우팅, SSR, 빌드 등)</li>
-                  <li><code style={{ fontFamily: 'var(--mono)', fontSize: '13px', color: 'var(--ac)' }}>&quot;react&quot;</code> — UI 라이브러리 본체</li>
-                  <li><code style={{ fontFamily: 'var(--mono)', fontSize: '13px', color: 'var(--ac)' }}>&quot;react-dom&quot;</code> — React를 브라우저 DOM에 연결해주는 것</li>
+                  <li><code style={{ fontFamily: 'var(--mono)', fontSize: '13px', color: 'var(--ac)' }}>&quot;next&quot;</code> — 프레임워크 (라우팅, SSR, 빌드 등).</li>
+                  <li><code style={{ fontFamily: 'var(--mono)', fontSize: '13px', color: 'var(--ac)' }}>&quot;react&quot;</code> — UI 라이브러리 본체.</li>
+                  <li><code style={{ fontFamily: 'var(--mono)', fontSize: '13px', color: 'var(--ac)' }}>&quot;react-dom&quot;</code> — React를 브라우저 DOM에 연결해주는 것.</li>
                 </ul>
               </div>
               <div className="modal-text" style={{ marginTop: '.75rem' }}>
